@@ -1,0 +1,11 @@
+{
+  "name": "matheus-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of Matheus Teixeira",
+  "scripts": {
+    "start": "npx http-server -p 5173"
+  },
+  "keywords": [],
+  "author": "Matheus Teixeira",
+  "license": "ISC"
+}
