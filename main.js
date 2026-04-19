@@ -30,14 +30,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Language Switcher ---
     const langToggleBtn = document.getElementById('langToggle');
     let currentLang = localStorage.getItem('lang') || 'en';
-    langToggleBtn.textContent = currentLang === 'en' ? 'PT' : 'EN';
+    
+    // Helper to return the flag image tag
+    const getFlagHTML = (lang) => {
+        if (lang === 'en') {
+            // Se está em inglês, mostramos bandeira do Brasil para trocar
+            return '<img src="https://flagcdn.com/br.svg" style="width: 24px; height: 18px; object-fit: cover; border-radius: 3px; display: block;" alt="PT">';
+        } else {
+            return '<img src="https://flagcdn.com/us.svg" style="width: 24px; height: 18px; object-fit: cover; border-radius: 3px; display: block;" alt="EN">';
+        }
+    };
+    
+    langToggleBtn.innerHTML = getFlagHTML(currentLang);
     
     // Initial translation apply
     applyTranslations(currentLang);
 
     langToggleBtn.addEventListener('click', () => {
         currentLang = currentLang === 'en' ? 'pt' : 'en';
-        langToggleBtn.textContent = currentLang === 'en' ? 'PT' : 'EN';
+        langToggleBtn.innerHTML = getFlagHTML(currentLang);
         localStorage.setItem('lang', currentLang);
         
         // Add a slight fade effect while translating
