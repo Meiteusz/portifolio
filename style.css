@@ -352,7 +352,7 @@ main section[id] {
 }
 
 /* Scroll reveal. The section carries the coarse fade; each ledger row and
-   certification then settles on its own as you reach it, so a long section
+   project then settles on its own as you reach it, so a long section
    keeps moving instead of arriving all at once. */
 .js .section {
   opacity: 0;
@@ -366,21 +366,19 @@ main section[id] {
 }
 
 .js .ledger > li,
-.js .certs > li {
+.js .projects > li {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .js .ledger > li.is-visible,
-.js .certs > li.is-visible {
+.js .projects > li.is-visible {
   opacity: 1;
   transform: none;
 }
 
 .js .about,
-.js .contact-line,
-.js .contact-mail,
 .js .socials {
   opacity: 0;
   transform: translateY(16px);
@@ -388,8 +386,6 @@ main section[id] {
 }
 
 .js .about.is-visible,
-.js .contact-line.is-visible,
-.js .contact-mail.is-visible,
 .js .socials.is-visible {
   opacity: 1;
   transform: none;
@@ -414,6 +410,103 @@ main section[id] {
   margin-top: 3rem;
   padding-top: 0.9rem;
   border-top: 1px solid var(--rule);
+}
+
+/* ---------- Projects ----------
+   A sparse index: hairline, number, name, one line of what it is.
+   The whole row is the link, so the arrow is affordance, not a target. */
+/* Each row carries its own product's accent, taken from that product's live site:
+   Aura's --primary (hsl 217 91% 60%), Diffluent's --accent, Postlight's --accent.
+   All three clear 3:1 against the page ground, so they can carry the hover state. */
+.project[data-accent="aura"] {
+  --project-accent: #3C83F6;
+}
+
+.project[data-accent="diffluent"] {
+  --project-accent: #FB923C;
+}
+
+.project[data-accent="postlight"] {
+  --project-accent: #F5B040;
+}
+
+.projects {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.projects > li + li .project {
+  border-top: 1px solid var(--rule);
+}
+
+.project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.5rem 1.5rem;
+  padding: clamp(1.75rem, 4.5vh, 2.75rem) 0;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-key {
+  grid-column: 1 / -1;
+}
+
+.project-name {
+  grid-column: 1;
+}
+
+.project-arrow {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.project-note {
+  grid-column: 1 / -1;
+}
+
+.project-num {
+  color: var(--project-accent, #565A61);
+}
+
+.project-name {
+  margin: 0.35rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(1.875rem, 6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  transition: color 0.25s ease;
+}
+
+.project-note {
+  margin: 0.6rem 0 0;
+  max-width: 30rem;
+  font-size: 0.9062rem;
+  line-height: 1.55;
+  color: var(--graphite);
+}
+
+.project-arrow {
+  align-self: center;
+  font-size: 1.125rem;
+  line-height: 1;
+  color: var(--graphite);
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.project:hover .project-name,
+.project:focus-visible .project-name,
+.project:hover .project-arrow,
+.project:focus-visible .project-arrow {
+  color: var(--project-accent, var(--signal));
+}
+
+.project:hover .project-arrow,
+.project:focus-visible .project-arrow {
+  transform: translateX(0.35rem);
 }
 
 /* ---------- Ledger ---------- */
@@ -506,41 +599,6 @@ main section[id] {
   color: var(--signal);
 }
 
-/* ---------- Certifications ---------- */
-.certs {
-  margin: 1.5rem 0 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  gap: 0.6rem;
-}
-
-.certs li {
-  position: relative;
-  padding-left: 1.4rem;
-  font-family: var(--mono);
-  font-size: 0.8125rem;
-  line-height: 1.5;
-  color: #9AA0A8;
-}
-
-.certs li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.6em;
-  width: 0.6rem;
-  height: 1px;
-  background: var(--rule-lit);
-}
-
-@media (min-width: 40rem) {
-  .certs {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.7rem 2.5rem;
-  }
-}
-
 /* Featured shot — only the lead entry earns an image. */
 .shot {
   margin: 1.5rem 0 0;
@@ -589,32 +647,8 @@ main section[id] {
   margin-bottom: 0;
 }
 
+
 /* ---------- Contact ---------- */
-.contact-line {
-  margin: 1.75rem 0 0.75rem;
-  font-family: var(--display);
-  font-size: clamp(1.25rem, 3.4vw, 1.75rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
-
-.contact-mail {
-  display: inline-block;
-  font-family: var(--mono);
-  font-size: clamp(0.875rem, 2.6vw, 1.0625rem);
-  color: var(--chalk);
-  text-decoration: none;
-  background-image: linear-gradient(var(--signal), var(--signal));
-  background-size: 100% 1px;
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  transition: color 0.25s ease;
-}
-
-.contact-mail:hover {
-  color: var(--signal);
-}
-
 .socials {
   display: flex;
   flex-wrap: wrap;
@@ -682,6 +716,26 @@ main section[id] {
     padding-top: 0.35rem;
   }
 
+  /* Index, name, note and arrow settle into columns. */
+  .project {
+    grid-template-columns: 9rem minmax(0, 1.6fr) minmax(0, 1fr) 1.25rem;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .project-key,
+  .project-name,
+  .project-note,
+  .project-arrow {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .project-name,
+  .project-note {
+    margin: 0;
+  }
+
   .about {
     grid-template-columns: 190px 1fr;
     gap: 3rem;
@@ -738,10 +792,8 @@ main section[id] {
 
   .js .section,
   .js .ledger > li,
-  .js .certs > li,
+  .js .projects > li,
   .js .about,
-  .js .contact-line,
-  .js .contact-mail,
   .js .socials {
     opacity: 1;
     transform: none;

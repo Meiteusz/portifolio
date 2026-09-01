@@ -270,7 +270,7 @@
   Array.prototype.push.apply(revealTargets, document.querySelectorAll('.section'));
 
   // Rows inside a group settle one after another rather than all together.
-  document.querySelectorAll('.ledger, .certs').forEach(function (group) {
+  document.querySelectorAll('.ledger, .projects').forEach(function (group) {
     Array.prototype.slice.call(group.children).forEach(function (row, i) {
       row.style.transitionDelay = Math.min(i * 70, 350) + 'ms';
       revealTargets.push(row);
@@ -280,7 +280,7 @@
   // Blocks that are not rows but still deserve their own entrance.
   Array.prototype.push.apply(
     revealTargets,
-    document.querySelectorAll('.about, .contact-line, .contact-mail, .socials')
+    document.querySelectorAll('.about, .socials')
   );
 
   function revealAll() {

@@ -24,7 +24,7 @@
     href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=23">
+  <link rel="stylesheet" href="style.css?v=26">
 </head>
 
 <body>
@@ -35,7 +35,7 @@
     <ul class="rail-list">
       <li><a href="#intro" class="rail-link is-active" data-i18n="nav_intro">Intro</a></li>
       <li><a href="#background" class="rail-link" data-i18n="nav_background">Background</a></li>
-      <li><a href="#work" class="rail-link" data-i18n="nav_work">Work</a></li>
+      <li><a href="#work" class="rail-link" data-i18n="nav_work">Projects</a></li>
       <li><a href="#about" class="rail-link" data-i18n="nav_about">About</a></li>
       <li><a href="#contact" class="rail-link" data-i18n="nav_contact">Contact</a></li>
     </ul>
@@ -72,7 +72,7 @@
 
       <p class="bio" id="bioText">I build the systems behind logistics and distribution — warehouse stock, automatic
         store replenishment, product catalogues. Five years of it, mostly .NET and Angular, with Flutter on mobile. On
-        the side I run my own app, live on both stores with paying subscribers.</p>
+        the side I build and run my own products — one of them live on both stores with paying subscribers.</p>
 
       <div class="actions">
         <a class="action action-primary" href="mailto:contato.matheuswt@gmail.com" data-i18n="btn_email">Send an
@@ -95,7 +95,7 @@
         <li class="entry">
           <div class="entry-key">
             <span class="label">2024.05 —</span>
-            <span class="label now">Now</span>
+            <span class="label now" data-i18n="now">Now</span>
           </div>
           <div class="entry-body">
             <h3 class="entry-title">
@@ -147,101 +147,47 @@
         </li>
       </ul>
 
-      <div class="sub-head">
-        <h3 class="label" data-i18n="cert_label">Certifications</h3>
-      </div>
-      <ul class="certs">
-        <li data-i18n="cert_1">Flutter Advanced: Multi-Modular &amp; Clean Architecture | Bloc</li>
-        <li data-i18n="cert_2">Microservices with .NET 6: implementing communication</li>
-        <li data-i18n="cert_3">Docker: building and managing containers</li>
-        <li data-i18n="cert_4">Claude Code in Action</li>
-      </ul>
     </section>
 
-    <!-- WORK -->
+    <!-- PROJECTS -->
     <section id="work" class="section">
       <div class="rule-head">
-        <h2 class="label" data-i18n="work_label">Selected work</h2>
-        <span class="label meta" data-i18n="work_meta">5 projects · 2021 — now</span>
+        <h2 class="label" data-i18n="work_label">Projects</h2>
+        <span class="label meta" data-i18n="work_meta">Personal products</span>
       </div>
 
-      <ol class="ledger">
-        <li class="entry entry-lead">
-          <div class="entry-key">
-            <span class="label now" data-i18n="key_personal">Personal</span>
-          </div>
-          <div class="entry-body">
-            <h3 class="entry-title">Aura</h3>
-            <p class="entry-desc" data-i18n="proj_aura_desc">My own product: a Flutter app on the App Store and Google
-              Play with subscription plans and paying users, backed by a .NET 8 API on PostgreSQL. I built the app end to
-              end and most of the API, and it has shipped an update almost every month since launch.</p>
-            <p class="stack">Flutter · Dart · .NET 8 · PostgreSQL</p>
-            <p class="label state state-live" data-i18n="proj_aura_state">Live · App Store &amp; Google Play</p>
-            <!-- Drop a real screenshot from the running app here. Markup and styles are ready:
-                 <figure class="shot">
-                   <img src="assets/aura.webp" alt="Aura app interface"
-                        width="1024" height="1024" loading="lazy" decoding="async">
-                 </figure> -->
-          </div>
+      <ol class="projects">
+        <li>
+          <a class="project" data-accent="aura" href="https://aura.dispoapps.com.br/" target="_blank" rel="noopener">
+            <span class="project-key label"><span class="project-num">01</span> / <span
+                data-i18n="proj_aura_cat">Scheduling</span></span>
+            <h3 class="project-name">Aura</h3>
+            <p class="project-note" data-i18n="proj_aura_note">Scheduling and management for barbershops. Live on both
+              stores, with subscription plans and paying users.</p>
+            <span class="project-arrow" aria-hidden="true">→</span>
+          </a>
         </li>
 
-        <li class="entry">
-          <div class="entry-key">
-            <span class="label">Autoglass</span>
-          </div>
-          <div class="entry-body">
-            <h3 class="entry-title">ProductHub</h3>
-            <p class="entry-desc" data-i18n="proj_hub_desc">The company's central product platform, replacing the legacy
-              system as the source of truth for the catalogue — any system or API that needs product context queries the
-              hub. I work on the catalogue migration and the continuous sync, with jobs that detect divergences and
-              publish the events to Kafka.</p>
-            <p class="stack">.NET · Angular · Oracle · Kafka</p>
-            <p class="label state state-live" data-i18n="proj_hub_state">Current</p>
-          </div>
+        <li>
+          <a class="project" data-accent="diffluent" href="https://diffluent.vercel.app/" target="_blank" rel="noopener">
+            <span class="project-key label"><span class="project-num">02</span> / <span
+                data-i18n="proj_diff_cat">Language</span></span>
+            <h3 class="project-name">Diffluent</h3>
+            <p class="project-note" data-i18n="proj_diff_note">English review treated as code review — a diff of what a
+              native speaker would have said, and the reason behind each change.</p>
+            <span class="project-arrow" aria-hidden="true">→</span>
+          </a>
         </li>
 
-        <li class="entry">
-          <div class="entry-key">
-            <span class="label">Autoglass</span>
-          </div>
-          <div class="entry-body">
-            <h3 class="entry-title">Product Kanban</h3>
-            <p class="entry-desc" data-i18n="proj_kanban_desc">A digital board tracking more than 25,000 SKUs, replacing
-              a spreadsheet five people maintained by hand. A .NET job on Quartz applies the business rules to the main
-              table, and a materialised view built from it feeds the Tableau dashboards. Queries tuned with CTEs. Updated
-              daily, with no manual entry.</p>
-            <p class="stack">.NET · Quartz · Oracle · PL/SQL · Tableau</p>
-          </div>
-        </li>
-
-        <li class="entry">
-          <div class="entry-key">
-            <span class="label">Autoglass</span>
-          </div>
-          <div class="entry-body">
-            <h3 class="entry-title">WMS · Asynchronous addressing</h3>
-            <p class="entry-desc" data-i18n="proj_wms_desc">The addressing algorithm swept every address by product
-              dimension and turnover, and ran synchronously — some products left an operator waiting up to five minutes,
-              in an operation handling thousands of products a day. The step did not need to be synchronous, since the
-              product still awaited physical allocation afterwards. I moved it onto a Kafka FIFO queue, kept only the
-              address lookup synchronous, and notified the user by email on completion. The wait is gone.</p>
-            <p class="stack">Kafka · .NET · Oracle</p>
-          </div>
-        </li>
-
-        <li class="entry">
-          <div class="entry-key">
-            <span class="label">Benner</span>
-          </div>
-          <div class="entry-body">
-            <h3 class="entry-title">BL Mobile</h3>
-            <p class="entry-desc" data-i18n="proj_mobile_desc">The app that digitised logistics transport checklists,
-              integrated directly with the core system and replacing a manual process. I built the mobile side and its
-              layered API. In use across several of the client's branches, issuing more than 5,000 checklists a month.
-            </p>
-            <p class="stack">Flutter · Dart · .NET 7 · EF Core · DDD</p>
-            <p class="label state" data-i18n="proj_mobile_state">Google Play</p>
-          </div>
+        <li>
+          <a class="project" data-accent="postlight" href="https://www.getpostlight.com/" target="_blank" rel="noopener">
+            <span class="project-key label"><span class="project-num">03</span> / <span
+                data-i18n="proj_post_cat">Content</span></span>
+            <h3 class="project-name">Postlight</h3>
+            <p class="project-note" data-i18n="proj_post_note">Turns an app screenshot into a finished Instagram post,
+              with your product's own branding applied.</p>
+            <span class="project-arrow" aria-hidden="true">→</span>
+          </a>
         </li>
       </ol>
     </section>
@@ -274,11 +220,7 @@
     <section id="contact" class="section">
       <div class="rule-head">
         <h2 class="label" data-i18n="contact_label">Contact</h2>
-        <span class="label meta" data-i18n="contact_meta">Usually replies same day</span>
       </div>
-
-      <p class="contact-line" data-i18n="contact_line">Have a role, a project, or a question?</p>
-      <a class="contact-mail" href="mailto:contato.matheuswt@gmail.com">contato.matheuswt@gmail.com</a>
 
       <ul class="socials">
         <li>
@@ -319,8 +261,8 @@
 
   </main>
 
-  <script src="translations.js?v=23"></script>
-  <script src="main.js?v=23"></script>
+  <script src="translations.js?v=26"></script>
+  <script src="main.js?v=26"></script>
 </body>
 
 </html>

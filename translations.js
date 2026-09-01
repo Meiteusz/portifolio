@@ -8,7 +8,7 @@ const translations = {
 
     nav_intro: "Intro",
     nav_background: "Background",
-    nav_work: "Work",
+    nav_work: "Projects",
     nav_about: "About",
     nav_contact: "Contact",
 
@@ -18,7 +18,7 @@ const translations = {
       anyone: {
         tab: "Anyone",
         role: "Software that moves things",
-        bio: "I build the systems behind logistics and distribution — warehouse stock, automatic store replenishment, product catalogues. Five years of it, mostly .NET and Angular, with Flutter on mobile. On the side I run my own app, live on both stores with paying subscribers."
+        bio: "I build the systems behind logistics and distribution — warehouse stock, automatic store replenishment, product catalogues. Five years of it, mostly .NET and Angular, with Flutter on mobile. On the side I build and run my own products — one of them live on both stores with paying subscribers."
       },
       recruiters: {
         tab: "Recruiters",
@@ -39,6 +39,7 @@ const translations = {
     /* ---------- Background ---------- */
     bg_label: "Background",
     bg_meta: "5 years · 2021 — now",
+    now: "Now",
 
     exp_role_1: "Mid-level Developer",
     exp_desc_1:
@@ -51,35 +52,22 @@ const translations = {
     edu_degree_1: "Systems Analysis & Development (CST)",
     edu_degree_2: "Systems Development Technician",
 
-    cert_label: "Certifications",
-    cert_1: "Flutter Advanced: Multi-Modular & Clean Architecture | Bloc",
-    cert_2: "Microservices with .NET 6: implementing communication",
-    cert_3: "Docker: building and managing containers",
-    cert_4: "Claude Code in Action",
 
-    /* ---------- Work ---------- */
-    work_label: "Selected work",
-    work_meta: "5 projects · 2021 — now",
+    /* ---------- Projects ---------- */
+    work_label: "Projects",
+    work_meta: "Personal products",
 
-    key_personal: "Personal",
+    proj_aura_cat: "Scheduling",
+    proj_aura_note:
+      "Scheduling and management for barbershops. Live on both stores, with subscription plans and paying users.",
 
-    proj_aura_desc:
-      "My own product: a Flutter app on the App Store and Google Play with subscription plans and paying users, backed by a .NET 8 API on PostgreSQL. I built the app end to end and most of the API, and it has shipped an update almost every month since launch.",
-    proj_aura_state: "Live · App Store & Google Play",
+    proj_diff_cat: "Language",
+    proj_diff_note:
+      "English review treated as code review — a diff of what a native speaker would have said, and the reason behind each change.",
 
-    proj_hub_desc:
-      "The company's central product platform, replacing the legacy system as the source of truth for the catalogue — any system or API that needs product context queries the hub. I work on the catalogue migration and the continuous sync, with jobs that detect divergences and publish the events to Kafka.",
-    proj_hub_state: "Current",
-
-    proj_kanban_desc:
-      "A digital board tracking more than 25,000 SKUs, replacing a spreadsheet five people maintained by hand. A .NET job on Quartz applies the business rules to the main table, and a materialised view built from it feeds the Tableau dashboards. Queries tuned with CTEs. Updated daily, with no manual entry.",
-
-    proj_wms_desc:
-      "The addressing algorithm swept every address by product dimension and turnover, and ran synchronously — some products left an operator waiting up to five minutes, in an operation handling thousands of products a day. The step did not need to be synchronous, since the product still awaited physical allocation afterwards. I moved it onto a Kafka FIFO queue, kept only the address lookup synchronous, and notified the user by email on completion. The wait is gone.",
-
-    proj_mobile_desc:
-      "The app that digitised logistics transport checklists, integrated directly with the core system and replacing a manual process. I built the mobile side and its layered API. In use across several of the client's branches, issuing more than 5,000 checklists a month.",
-    proj_mobile_state: "Google Play",
+    proj_post_cat: "Content",
+    proj_post_note:
+      "Turns an app screenshot into a finished Instagram post, with your product's own branding applied.",
 
     /* ---------- About ---------- */
     about_label: "About",
@@ -93,8 +81,6 @@ const translations = {
 
     /* ---------- Contact ---------- */
     contact_label: "Contact",
-    contact_meta: "Usually replies same day",
-    contact_line: "Have a role, a project, or a question?",
     footer_rights: "All rights reserved.",
     back_to_top: "Back to top ↑"
   },
@@ -116,7 +102,7 @@ const translations = {
       anyone: {
         tab: "Qualquer um",
         role: "Software que move coisas",
-        bio: "Construo os sistemas por trás da logística e da distribuição — estoque de armazém, abastecimento automático de lojas, catálogo de produtos. São 5 anos disso, principalmente .NET e Angular, com Flutter no mobile. Fora do trabalho, mantenho meu próprio app no ar, publicado nas duas lojas e com assinantes pagantes."
+        bio: "Construo os sistemas por trás da logística e da distribuição — estoque de armazém, abastecimento automático de lojas, catálogo de produtos. São 5 anos disso, principalmente .NET e Angular, com Flutter no mobile. Fora do trabalho, construo e mantenho meus próprios produtos — um deles no ar nas duas lojas, com assinantes pagantes."
       },
       recruiters: {
         tab: "Recrutadores",
@@ -137,6 +123,7 @@ const translations = {
     /* ---------- Trajetória ---------- */
     bg_label: "Trajetória",
     bg_meta: "5 anos · 2021 — hoje",
+    now: "Hoje",
 
     exp_role_1: "Desenvolvedor Pleno",
     exp_desc_1:
@@ -149,35 +136,22 @@ const translations = {
     edu_degree_1: "Análise e Desenvolvimento de Sistemas (CST)",
     edu_degree_2: "Técnico em Desenvolvimento de Sistemas",
 
-    cert_label: "Certificações",
-    cert_1: "Flutter Advanced: Multi-Modular & Clean Architecture | Bloc",
-    cert_2: "Microsserviços e .NET 6: implementando a comunicação",
-    cert_3: "Docker: criando e gerenciando containers",
-    cert_4: "Claude Code in Action",
 
     /* ---------- Projetos ---------- */
-    work_label: "Projetos selecionados",
-    work_meta: "5 projetos · 2021 — hoje",
+    work_label: "Projetos",
+    work_meta: "Produtos próprios",
 
-    key_personal: "Pessoal",
+    proj_aura_cat: "Agenda",
+    proj_aura_note:
+      "Agenda e gestão para barbearias. No ar nas duas lojas, com planos de assinatura e usuários pagantes.",
 
-    proj_aura_desc:
-      "Meu produto próprio: um app em Flutter na App Store e no Google Play, com planos de assinatura e usuários pagantes, sustentado por uma API .NET 8 sobre PostgreSQL. Fiz o app inteiro e boa parte da API, e ele recebe atualização quase todo mês desde o lançamento.",
-    proj_aura_state: "No ar · App Store e Google Play",
+    proj_diff_cat: "Idioma",
+    proj_diff_note:
+      "Revisão de inglês tratada como code review — um diff do que soaria diferente na boca de um nativo, e o motivo de cada troca.",
 
-    proj_hub_desc:
-      "A plataforma central de produtos da empresa, que substitui o legado como fonte de verdade do catálogo — qualquer sistema ou API que precise de contexto de produto consulta o hub. Atuo na migração do catálogo e na sincronização contínua, com jobs que identificam divergências e publicam os eventos em Kafka.",
-    proj_hub_state: "Atual",
-
-    proj_kanban_desc:
-      "Um quadro digital que acompanha mais de 25 mil SKUs, substituindo uma planilha mantida à mão por um time de 5 pessoas. Um job .NET em Quartz aplica as regras de negócio na tabela principal, e uma view materializada alimentada a partir dela serve os dashboards em Tableau. Consultas otimizadas com CTEs. Atualização diária, sem entrada manual.",
-
-    proj_wms_desc:
-      "O algoritmo de endereçamento varria todos os endereços considerando dimensões e giro do produto, e rodava de forma síncrona — alguns produtos deixavam o operador parado esperando até cinco minutos, numa operação de milhares de produtos por dia. A etapa não precisava ser síncrona, já que o produto ainda aguardava alocação física depois. Reestruturei o fluxo com fila FIFO no Kafka, mantendo síncrona apenas a busca de endereços e notificando o usuário por e-mail na conclusão. A espera acabou.",
-
-    proj_mobile_desc:
-      "O app que digitalizou os checklists de transporte logístico, com integração direta ao sistema e substituindo o processo manual. Construí o mobile e a API em camadas. Em uso em várias filiais do cliente, emitindo mais de 5 mil checklists por mês.",
-    proj_mobile_state: "Google Play",
+    proj_post_cat: "Conteúdo",
+    proj_post_note:
+      "Transforma o print do seu app em um post pronto para o Instagram, com a identidade do seu produto aplicada.",
 
     /* ---------- Sobre ---------- */
     about_label: "Sobre",
@@ -191,8 +165,6 @@ const translations = {
 
     /* ---------- Contato ---------- */
     contact_label: "Contato",
-    contact_meta: "Costuma responder no mesmo dia",
-    contact_line: "Tem uma vaga, um projeto ou uma dúvida?",
     footer_rights: "Todos os direitos reservados.",
     back_to_top: "Voltar ao topo ↑"
   }
