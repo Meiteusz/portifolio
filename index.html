@@ -2,294 +2,325 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matheus Teixeira | Fullstack Developer</title>
-    <meta name="description"
-        content="Portfolio of Matheus Teixeira, Fullstack Developer specializing in .NET, Flutter, React, and Angular.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matheus Teixeira — Fullstack Developer</title>
+  <meta id="meta-description" name="description"
+    content="Matheus Teixeira is a fullstack developer in Blumenau, Brazil, with five years in logistics and distribution systems built on .NET, Angular, Oracle, Kafka and Flutter.">
+  <meta name="theme-color" content="#0A0B0D">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Matheus Teixeira — Fullstack Developer">
+  <meta property="og:description"
+    content="Five years in logistics and distribution systems. .NET, Angular, Oracle, Kafka, Flutter.">
+  <meta property="og:image" content="assets/profile.webp">
+  <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script>document.documentElement.classList.add('js');</script>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
+    rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=17">
+  <link rel="stylesheet" href="style.css?v=23">
 </head>
 
-<body data-theme="dark">
+<body>
+  <a class="skip-link" href="#intro">Skip to content</a>
 
-    <div class="glow-bg"></div>
+  <!-- Sticky top bar; becomes a fixed vertical rail on wide screens. -->
+  <nav class="rail" aria-label="Sections">
+    <ul class="rail-list">
+      <li><a href="#intro" class="rail-link is-active" data-i18n="nav_intro">Intro</a></li>
+      <li><a href="#background" class="rail-link" data-i18n="nav_background">Background</a></li>
+      <li><a href="#work" class="rail-link" data-i18n="nav_work">Work</a></li>
+      <li><a href="#about" class="rail-link" data-i18n="nav_about">About</a></li>
+      <li><a href="#contact" class="rail-link" data-i18n="nav_contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <nav class="navbar">
-        <div class="nav-links">
-            <a href="#hero" class="nav-item" aria-label="Home"><i class="ph ph-house"></i></a>
-            <a href="#about" class="nav-item" aria-label="About"><i class="ph ph-user-circle"></i></a>
-            <a href="#experience" class="nav-item" aria-label="Experience"><i class="ph ph-briefcase"></i></a>
-            <a href="#projects" class="nav-item" aria-label="Projects"><i class="ph ph-laptop"></i></a>
-            <a href="#contact" class="nav-item" aria-label="Contact"><i class="ph ph-envelope"></i></a>
+  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+    <span class="lang-current">EN</span>
+    <span class="lang-sep">/</span>
+    <span class="lang-other">PT</span>
+  </button>
+
+  <main class="shell">
+
+    <!-- INTRO -->
+    <section id="intro" class="intro">
+      <h1 class="wordmark">Matheus<br>Teixeira</h1>
+
+      <!-- Signature: flips like a dispatch board when the audience changes.
+           The animated glyphs are hidden from assistive tech; only the settled
+           string is announced, once, through the live region beside it. -->
+      <p class="role">
+        <span id="roleLine" aria-hidden="true">Software that moves things</span>
+        <span class="sr-only" id="roleLive" aria-live="polite"></span>
+      </p>
+
+      <div class="switcher">
+        <span class="label switcher-label" id="switcherLabel" data-i18n="reading_as">Reading as</span>
+        <div class="switcher-tabs" role="group" aria-labelledby="switcherLabel">
+          <button type="button" class="tab is-active" aria-pressed="true" data-audience="anyone">Anyone</button>
+          <button type="button" class="tab" aria-pressed="false" data-audience="recruiters">Recruiters</button>
+          <button type="button" class="tab" aria-pressed="false" data-audience="engineers">Engineers</button>
         </div>
-    </nav>
-    <div class="top-actions">
-        <button id="langToggle" class="icon-btn">PT</button>
-        <button id="themeToggle" class="icon-btn" aria-label="Toggle Theme"><i class="ph ph-moon"></i></button>
-    </div>
+      </div>
 
-    <main class="container">
+      <p class="bio" id="bioText">I build the systems behind logistics and distribution — warehouse stock, automatic
+        store replenishment, product catalogues. Five years of it, mostly .NET and Angular, with Flutter on mobile. On
+        the side I run my own app, live on both stores with paying subscribers.</p>
 
-        <!-- HERO SECTION -->
-        <section id="hero" class="hero">
-            <div class="hero-content">
-                <p class="greeting"><span class="wave">👋</span> <span data-i18n="hero_hello">Hello, I'm</span></p>
-                <h1 class="name">Matheus Teixeira</h1>
-                <p class="pronunciation" data-i18n="hero_pronunciation">(pronounced like "Ma-the-us")</p>
+      <div class="actions">
+        <a class="action action-primary" href="mailto:contato.matheuswt@gmail.com" data-i18n="btn_email">Send an
+          email</a>
+        <a class="action" href="assets/resume.pdf" target="_blank" rel="noopener" data-i18n="btn_resume">Download
+          résumé</a>
+        <a class="action" href="https://github.com/Meiteusz" target="_blank" rel="noopener"
+          data-i18n="btn_github">GitHub</a>
+      </div>
+    </section>
 
-                <h2 class="title">
-                    <span data-i18n="hero_title_1">Fullstack Developer</span> <span class="dim"
-                        data-i18n="hero_title_2">specialized in</span> <span class="highlight">.NET & Flutter</span><br>
-                    <span class="dim" data-i18n="hero_title_3">creating scalable systems and premium user
-                        experiences.</span>
-                </h2>
+    <!-- BACKGROUND -->
+    <section id="background" class="section">
+      <div class="rule-head">
+        <h2 class="label" data-i18n="bg_label">Background</h2>
+        <span class="label meta" data-i18n="bg_meta">5 years · 2021 — now</span>
+      </div>
 
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary" data-i18n="btn_connect">Let's connect</a>
-                </div>
-            </div>
+      <ol class="ledger">
+        <li class="entry">
+          <div class="entry-key">
+            <span class="label">2024.05 —</span>
+            <span class="label now">Now</span>
+          </div>
+          <div class="entry-body">
+            <h3 class="entry-title">
+              <a href="https://www.grupoautoglass.com.br/" target="_blank" rel="noopener">Grupo Autoglass</a>
+            </h3>
+            <p class="entry-role" data-i18n="exp_role_1">Mid-level Developer</p>
+            <p class="entry-desc" data-i18n="exp_desc_1">Across the product platform, WMS and DRP teams. Built the SKU
+              Kanban, moved WMS addressing off the synchronous path, and helped ship the DRP feature that returns idle
+              stock between units instead of raising a new purchase order.</p>
+            <p class="stack">.NET · C# · Angular · Oracle · PL/SQL · Kafka · DDD · xUnit · Azure DevOps</p>
+          </div>
+        </li>
 
-            <div class="hero-image">
-                <div class="image-wrapper">
-                    <img src="assets/profile.png" alt="Matheus Teixeira" loading="lazy">
-                </div>
-                <div class="social-links image-socials">
-                    <a href="mailto:contato.matheuswt@gmail.com" aria-label="Email"><i
-                            class="fa-solid fa-envelope"></i></a>
-                    <a href="https://linkedin.com/in/matheus-teixeira-43b9821b8" target="_blank"
-                        aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/Meiteusz" target="_blank" aria-label="GitHub"><i
-                            class="fa-brands fa-github"></i></a>
-                </div>
-            </div>
-        </section>
+        <li class="entry">
+          <div class="entry-key">
+            <span class="label">2021.06 —</span>
+            <span class="label">2024.05</span>
+          </div>
+          <div class="entry-body">
+            <h3 class="entry-title">Benner</h3>
+            <p class="entry-role" data-i18n="exp_role_2">Apprentice → Junior → Mid-level</p>
+            <p class="entry-desc" data-i18n="exp_desc_2">Three years on a logistics product, reaching mid-level in 16
+              months. Technical reference for the squad, reviewing the team's code and backing both technical and
+              business-rule decisions. Lead developer on a payment partner integration — I travelled to the client's
+              city, at their invitation, to understand the operation first hand. Also worked in the architecture and
+              DevOps squad on Jenkins CI/CD and pipeline automation.</p>
+            <p class="stack">Flutter · Dart · .NET 7 · EF Core · DDD · Jenkins · TDD · SOLID</p>
+          </div>
+        </li>
+      </ol>
 
-        <!-- ABOUT SECTION -->
-        <section id="about" class="section">
-            <h2 class="section-title" data-i18n="about_title">About Me</h2>
-            <div class="about-content">
-                <p data-i18n="about_p1">With a degree in Systems Analysis and Development, I'm currently focused on
-                    building robust logistics systems and complex web applications. My work revolves around creating
-                    highly performant backends with .NET and intuitive frontends with Angular, React, or mobile
-                    experiences in Flutter.</p>
-                <p data-i18n="about_p2">Recently, I've been developing a personal application leveraging Flutter, .NET 8
-                    API, and PostgreSQL, complete with subscription plans and Firebase integration.</p>
+      <div class="sub-head">
+        <h3 class="label" data-i18n="edu_label">Education</h3>
+      </div>
+      <ul class="ledger ledger-tight">
+        <li class="entry">
+          <div class="entry-key"><span class="label">2022 — 2025</span></div>
+          <div class="entry-body">
+            <h4 class="entry-title entry-title-sm">UNINTER</h4>
+            <p class="entry-role" data-i18n="edu_degree_1">Systems Analysis &amp; Development (CST)</p>
+          </div>
+        </li>
+        <li class="entry">
+          <div class="entry-key"><span class="label">2020 — 2021</span></div>
+          <div class="entry-body">
+            <h4 class="entry-title entry-title-sm">SENAI/SC</h4>
+            <p class="entry-role" data-i18n="edu_degree_2">Systems Development Technician</p>
+          </div>
+        </li>
+      </ul>
 
-                <div class="current-role">
-                    <p><span class="dim" data-i18n="about_current">Currently working at</span> <a href="https://www.grupoautoglass.com.br/" target="_blank" class="highlight company-link">Grupo Autoglass</a>.</p>
-                </div>
-            </div>
+      <div class="sub-head">
+        <h3 class="label" data-i18n="cert_label">Certifications</h3>
+      </div>
+      <ul class="certs">
+        <li data-i18n="cert_1">Flutter Advanced: Multi-Modular &amp; Clean Architecture | Bloc</li>
+        <li data-i18n="cert_2">Microservices with .NET 6: implementing communication</li>
+        <li data-i18n="cert_3">Docker: building and managing containers</li>
+        <li data-i18n="cert_4">Claude Code in Action</li>
+      </ul>
+    </section>
 
+    <!-- WORK -->
+    <section id="work" class="section">
+      <div class="rule-head">
+        <h2 class="label" data-i18n="work_label">Selected work</h2>
+        <span class="label meta" data-i18n="work_meta">5 projects · 2021 — now</span>
+      </div>
 
-        </section>
+      <ol class="ledger">
+        <li class="entry entry-lead">
+          <div class="entry-key">
+            <span class="label now" data-i18n="key_personal">Personal</span>
+          </div>
+          <div class="entry-body">
+            <h3 class="entry-title">Aura</h3>
+            <p class="entry-desc" data-i18n="proj_aura_desc">My own product: a Flutter app on the App Store and Google
+              Play with subscription plans and paying users, backed by a .NET 8 API on PostgreSQL. I built the app end to
+              end and most of the API, and it has shipped an update almost every month since launch.</p>
+            <p class="stack">Flutter · Dart · .NET 8 · PostgreSQL</p>
+            <p class="label state state-live" data-i18n="proj_aura_state">Live · App Store &amp; Google Play</p>
+            <!-- Drop a real screenshot from the running app here. Markup and styles are ready:
+                 <figure class="shot">
+                   <img src="assets/aura.webp" alt="Aura app interface"
+                        width="1024" height="1024" loading="lazy" decoding="async">
+                 </figure> -->
+          </div>
+        </li>
 
-        <!-- EXPERIENCE AND EDUCATION -->
-        <section id="experience" class="section">
-            <h2 class="section-title" data-i18n="experience_title">Experience & Education</h2>
+        <li class="entry">
+          <div class="entry-key">
+            <span class="label">Autoglass</span>
+          </div>
+          <div class="entry-body">
+            <h3 class="entry-title">ProductHub</h3>
+            <p class="entry-desc" data-i18n="proj_hub_desc">The company's central product platform, replacing the legacy
+              system as the source of truth for the catalogue — any system or API that needs product context queries the
+              hub. I work on the catalogue migration and the continuous sync, with jobs that detect divergences and
+              publish the events to Kafka.</p>
+            <p class="stack">.NET · Angular · Oracle · Kafka</p>
+            <p class="label state state-live" data-i18n="proj_hub_state">Current</p>
+          </div>
+        </li>
 
-            <div class="timeline-grid">
-                <!-- Experience Timeline -->
-                <div class="timeline">
-                    <h3 class="timeline-header" data-i18n="exp_header">Experience</h3>
+        <li class="entry">
+          <div class="entry-key">
+            <span class="label">Autoglass</span>
+          </div>
+          <div class="entry-body">
+            <h3 class="entry-title">Product Kanban</h3>
+            <p class="entry-desc" data-i18n="proj_kanban_desc">A digital board tracking more than 25,000 SKUs, replacing
+              a spreadsheet five people maintained by hand. A .NET job on Quartz applies the business rules to the main
+              table, and a materialised view built from it feeds the Tableau dashboards. Queries tuned with CTEs. Updated
+              daily, with no manual entry.</p>
+            <p class="stack">.NET · Quartz · Oracle · PL/SQL · Tableau</p>
+          </div>
+        </li>
 
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h4 class="company">Grupo Autoglass</h4>
-                            <p class="role" data-i18n="exp_role_1">Developer <span class="date">May 2024 -
-                                    Present</span></p>
-                            <p class="description" data-i18n="exp_desc_1">Developing new features for WMS and DRP
-                                systems using .NET 8 and Angular 18. Focused on improving performance, stability, and
-                                reducing operational costs for complex queries.</p>
-                            <div class="tag-row">
-                                <span class="tag"><i class="ph ph-code"></i> .NET 8</span>
-                                <span class="tag"><i class="ph ph-code"></i> Angular 18</span>
-                            </div>
-                        </div>
-                    </div>
+        <li class="entry">
+          <div class="entry-key">
+            <span class="label">Autoglass</span>
+          </div>
+          <div class="entry-body">
+            <h3 class="entry-title">WMS · Asynchronous addressing</h3>
+            <p class="entry-desc" data-i18n="proj_wms_desc">The addressing algorithm swept every address by product
+              dimension and turnover, and ran synchronously — some products left an operator waiting up to five minutes,
+              in an operation handling thousands of products a day. The step did not need to be synchronous, since the
+              product still awaited physical allocation afterwards. I moved it onto a Kafka FIFO queue, kept only the
+              address lookup synchronous, and notified the user by email on completion. The wait is gone.</p>
+            <p class="stack">Kafka · .NET · Oracle</p>
+          </div>
+        </li>
 
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h4 class="company">Benner</h4>
-                            <p class="role" data-i18n="exp_role_2">Mid-level Developer <span class="date">Oct 2022 - May
-                                    2024</span></p>
-                            <p class="description" data-i18n="exp_desc_2">Lead developer for electronic partner
-                                integrations. Built a logistics mobile app generating over 5K monthly checklists using
-                                Flutter and .NET 7 (DDD).</p>
-                            <div class="tag-row">
-                                <span class="tag"><i class="ph ph-code"></i> Flutter</span>
-                                <span class="tag"><i class="ph ph-code"></i> .NET 7</span>
-                                <span class="tag"><i class="ph ph-code"></i> DDD</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h4 class="company">Benner</h4>
-                            <p class="role" data-i18n="exp_role_3">Junior Developer <span class="date">Jun 2021 - Oct
-                                    2022</span></p>
-                            <p class="description" data-i18n="exp_desc_3">Implemented performance improvements for large
-                                datasets, automated deployments, and executed software corrections utilizing TDD and
-                                SOLID principles.</p>
-                            <div class="tag-row">
-                                <span class="tag"><i class="ph ph-code"></i> TDD</span>
-                                <span class="tag"><i class="ph ph-code"></i> SOLID</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Education Timeline -->
-                <div class="timeline">
-                    <h3 class="timeline-header" data-i18n="edu_header">Education</h3>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h4 class="company">UNINTER</h4>
-                            <p class="role" data-i18n="edu_degree_1">Systems Analysis and Development (CST) <span
-                                    class="date">2022 - 2025</span></p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <h4 class="company">SENAI/SC</h4>
-                            <p class="role" data-i18n="edu_degree_2">Systems Development Technician <span
-                                    class="date">2020 - 2021</span></p>
-                            <div class="tag-row">
-                                <span class="tag"><i class="ph ph-certificate"></i> Docker</span>
-                                <span class="tag"><i class="ph ph-certificate"></i> .NET 6 Microservices</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="center cv-download" style="margin-top: 3.5rem;">
-                <a href="assets/resume.pdf" class="btn btn-outline cv-btn" target="_blank" data-i18n="btn_download_cv">Download full resume (CV)</a>
-            </div>
-        </section>
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="section">
-            <div class="section-header">
-                <h2 class="section-title" data-i18n="projects_title">Selected Works</h2>
-                <p class="section-subtitle" data-i18n="projects_subtitle">A collection of applications exploring
-                    robust architectures and mobile native feel.</p>
-            </div>
-
-            <div class="projects-grid">
-
-                <!-- Aura Project (Highlight) -->
-                <div class="project-card highlight-card">
-                    <div class="project-image">
-                        <span class="featured-badge" data-i18n="badge_featured">Featured</span>
-                        <img src="assets/aura.png" alt="Aura App" loading="lazy">
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>Aura App</h3>
-                            <span class="year">2026</span>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">.NET 8</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Firebase</span>
-                        </div>
-                        <p class="project-desc" data-i18n="proj_aura_desc">A comprehensive personal application
-                            featuring subscription plans, real-time push notifications via Firebase, and local storage
-                            with Hive. Backed by a high-performance .NET 8 REST API.</p>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-outline" data-i18n="btn_details"><i class="ph ph-info"></i> View
-                                Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Benner Logistics Project -->
-                <div class="project-card">
-                    <div class="project-image placeholder bg-gradient-1">
-                        <i class="ph ph-truck"></i>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>Logistics Checklists</h3>
-                            <span class="year">2023</span>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">.NET 7</span>
-                            <span class="tech-tag">DDD</span>
-                        </div>
-                        <p class="project-desc" data-i18n="proj_benner_desc">A logistics mobile solution built for
-                            Benner, generating over 5,000 monthly operation checklists and syncing efficiently with
-                            legacy services.</p>
-                    </div>
-                </div>
-
-                <!-- Partner Integration Project -->
-                <div class="project-card">
-                    <div class="project-image placeholder bg-gradient-2">
-                        <i class="ph ph-plugs-connected"></i>
-                    </div>
-                    <div class="project-info">
-                        <div class="project-header">
-                            <h3>Partner API Integration</h3>
-                            <span class="year">2024</span>
-                        </div>
-                        <div class="project-tags">
-                            <span class="tech-tag">C#</span>
-                            <span class="tech-tag">ASP.NET</span>
-                            <span class="tech-tag">Azure</span>
-                        </div>
-                        <p class="project-desc" data-i18n="proj_integrations_desc">An electronic integration hub
-                            allowing B2B partners to interface securely with core systems. Focused on high throughput
-                            and failure recovery.</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- FOOTER / KEEP IN TOUCH -->
-        <section id="contact" class="section keep-in-touch">
-            <h2 class="huge-title">Let's Keep in <span class="highlight">Touch</span></h2>
-            <p class="subtitle" data-i18n="footer_subtitle">Whether you want to start a project, ask a question, or just
-                say hi — I'm just a message away.</p>
-
-            <div class="contact-actions">
-                <a href="mailto:contato.matheuswt@gmail.com" class="btn btn-primary" data-i18n="btn_contact_me">Contact
-                    me</a>
-                <a href="assets/resume.pdf" class="btn btn-outline" target="_blank" data-i18n="btn_resume">Download
-                    Resume</a>
-            </div>
-
-            <p class="copyright">© 2026 Matheus Teixeira. <span data-i18n="footer_rights">All rights reserved.</span>
+        <li class="entry">
+          <div class="entry-key">
+            <span class="label">Benner</span>
+          </div>
+          <div class="entry-body">
+            <h3 class="entry-title">BL Mobile</h3>
+            <p class="entry-desc" data-i18n="proj_mobile_desc">The app that digitised logistics transport checklists,
+              integrated directly with the core system and replacing a manual process. I built the mobile side and its
+              layered API. In use across several of the client's branches, issuing more than 5,000 checklists a month.
             </p>
-        </section>
+            <p class="stack">Flutter · Dart · .NET 7 · EF Core · DDD</p>
+            <p class="label state" data-i18n="proj_mobile_state">Google Play</p>
+          </div>
+        </li>
+      </ol>
+    </section>
 
-    </main>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="rule-head">
+        <h2 class="label" data-i18n="about_label">About</h2>
+        <span class="label meta" data-i18n="about_meta">Blumenau, SC · UTC−3</span>
+      </div>
 
-    <script src="translations.js?v=4"></script>
-    <script src="main.js?v=4"></script>
+      <div class="about">
+        <figure class="portrait">
+          <img src="assets/profile.webp" alt="Matheus Teixeira" width="600" height="600" loading="lazy"
+            decoding="async">
+        </figure>
+        <div class="about-copy">
+          <p data-i18n="about_p1">These are systems with a lot of business rules and a lot of integration surface. The
+            hard part is rarely writing the feature — it is understanding the operation behind it, and changing things
+            without breaking what already runs.</p>
+          <p data-i18n="about_p2">Outside work I build and run my own products. Keeping one live taught me plenty that
+            never shows up on a Jira card, mostly about what breaks after the deploy.</p>
+          <p data-i18n="about_p3">I use AI daily while developing, building agents and skills to speed up my own
+            workflow, and I'm working on integrating it into the applications I build.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="rule-head">
+        <h2 class="label" data-i18n="contact_label">Contact</h2>
+        <span class="label meta" data-i18n="contact_meta">Usually replies same day</span>
+      </div>
+
+      <p class="contact-line" data-i18n="contact_line">Have a role, a project, or a question?</p>
+      <a class="contact-mail" href="mailto:contato.matheuswt@gmail.com">contato.matheuswt@gmail.com</a>
+
+      <ul class="socials">
+        <li>
+          <a href="https://www.linkedin.com/in/matheusteixeiradev" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C21.4 8.75 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.34-2.04-3.34-2.04 0-2.35 1.6-2.35 3.24V21h-4V9z" />
+            </svg>
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Meiteusz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.2c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z" />
+            </svg>
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="mailto:contato.matheuswt@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor"
+                d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.5 7.8 5.85L19.8 6H4.2zM20 7.9l-7.4 5.55a1 1 0 0 1-1.2 0L4 7.9V18h16V7.9z" />
+            </svg>
+            Email
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="foot">
+      <p class="label">© <span id="year">2026</span> Matheus Teixeira. <span data-i18n="footer_rights">All rights
+          reserved.</span></p>
+      <a class="label foot-top" href="#intro" data-i18n="back_to_top">Back to top ↑</a>
+    </footer>
+
+  </main>
+
+  <script src="translations.js?v=23"></script>
+  <script src="main.js?v=23"></script>
 </body>
 
 </html>
