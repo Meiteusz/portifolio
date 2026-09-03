@@ -13,7 +13,6 @@
   <meta property="og:title" content="Matheus Teixeira — Fullstack Developer">
   <meta property="og:description"
     content="Five years in logistics and distribution systems. .NET, Angular, Oracle, Kafka, Flutter.">
-  <meta property="og:image" content="assets/profile.webp">
   <meta name="twitter:card" content="summary_large_image">
 
   <script>document.documentElement.classList.add('js');</script>
@@ -105,6 +104,47 @@
             <p class="entry-desc" data-i18n="exp_desc_1">Across the product platform, WMS and DRP teams. Built the SKU
               Kanban, moved WMS addressing off the synchronous path, and helped ship the DRP feature that returns idle
               stock between units instead of raising a new purchase order.</p>
+            <button type="button" class="entry-toggle" aria-expanded="false" aria-controls="entry-more-1"
+              data-i18n="see_more">See more ↓</button>
+            <div class="entry-more-wrap">
+              <div class="entry-more" id="entry-more-1" inert>
+                <div class="more-item">
+                  <p class="more-item-title" data-i18n="exp1_more_1_title">ProductHub (current)</p>
+                  <p class="more-item-desc" data-i18n="exp1_more_1_desc">The company's central product platform,
+                    replacing the legacy system as the source of truth for the catalog: any system or API that needs
+                    product context calls the hub. I work on the catalog migration and on continuous sync, with jobs
+                    that detect drift between both sides and publish the events to Kafka topics.</p>
+                </div>
+                <div class="more-item">
+                  <p class="more-item-title" data-i18n="exp1_more_2_title">Product development Kanban board</p>
+                  <p class="more-item-desc" data-i18n="exp1_more_2_desc">Designed and delivered the digital board
+                    that tracks 25,000+ SKUs, replacing a spreadsheet five people maintained by hand. The main table
+                    is updated by a .NET job (Quartz) that holds the business rules, and a materialized view built
+                    from it feeds the Tableau dashboards. I optimized the queries with CTEs. Updated daily, no manual
+                    data entry.</p>
+                </div>
+                <div class="more-item">
+                  <p class="more-item-title" data-i18n="exp1_more_3_title">WMS: async slotting</p>
+                  <p class="more-item-desc" data-i18n="exp1_more_3_desc">WMS runs the warehouse, from receiving
+                    through slotting across the DCs. The slotting algorithm scans every location, weighing product
+                    dimensions and turnover to pick the best one, and it ran synchronously: some items took up to 5
+                    minutes with the operator standing there waiting, in an operation that slots thousands of
+                    products a day. Working with the business team, I found the step didn't need to be synchronous,
+                    since the item still waited on someone to physically put it away after digital slotting.
+                    Refactoring the algorithm was the right fix, but it didn't fit the urgency. I restructured the
+                    flow around a FIFO Kafka queue, keeping only the location lookup synchronous and notifying the
+                    user by email on completion. The wait was gone for the operator.</p>
+                </div>
+                <div class="more-item">
+                  <p class="more-item-title" data-i18n="exp1_more_4_title">DRP: slow-moving stock transfers</p>
+                  <p class="more-item-desc" data-i18n="exp1_more_4_desc">DRP handles store replenishment,
+                    forecasting demand so each store gets what it needs before it runs out. The company was sitting
+                    on thousands of slow-moving items and still buying those same SKUs whenever a location needed
+                    them. I worked on the feature that flags that stock and, instead of raising a new purchase order,
+                    triggers a transfer from the location holding it to the one that needs it.</p>
+                </div>
+              </div>
+            </div>
             <p class="stack">.NET · C# · Angular · Oracle · PL/SQL · Kafka · DDD · xUnit · Azure DevOps</p>
           </div>
         </li>
@@ -122,6 +162,70 @@
               business-rule decisions. Lead developer on a payment partner integration — I travelled to the client's
               city, at their invitation, to understand the operation first hand. Also worked in the architecture and
               DevOps squad on Jenkins CI/CD and pipeline automation.</p>
+            <button type="button" class="entry-toggle" aria-expanded="false" aria-controls="entry-more-2"
+              data-i18n="see_more">See more ↓</button>
+            <div class="entry-more-wrap">
+              <div class="entry-more" id="entry-more-2" inert>
+                <div class="more-role">
+                  <div class="more-role-head">
+                    <span class="more-role-title" data-i18n="exp2_role_a_title">Mid-Level Developer</span>
+                    <span class="more-role-date">2022.10 — 2024.05</span>
+                  </div>
+                  <div class="more-item">
+                    <p class="more-item-title" data-i18n="exp2_more_1_title">BL Mobile — logistics checklists</p>
+                    <p class="more-item-desc" data-i18n="exp2_more_1_desc">Built the app that digitized transport
+                      checklists, integrated directly with the core system and replacing a paper process. I worked on
+                      the mobile app end to end and on the API and its layered architecture. In use across several of
+                      the client's branches, issuing 5,000+ checklists a month. Stack — API: .NET 7, EF Core, DDD,
+                      RESTful API, unit tests. Mobile: Flutter, Dart, dio, provider, shared_preferences, shipped to
+                      Google Play.</p>
+                  </div>
+                  <div class="more-item">
+                    <p class="more-item-title" data-i18n="exp2_more_2_title">Tech lead for the squad</p>
+                    <p class="more-item-desc" data-i18n="exp2_more_2_desc">I was the squad's technical point of
+                      contact, both for engineering and for the logistics domain. I reviewed the team's code and
+                      backed the other developers on technical decisions and on questions about the product's
+                      business rules, keeping code standards and unit test coverage consistent across our work.</p>
+                  </div>
+                  <div class="more-item">
+                    <p class="more-item-title" data-i18n="exp2_more_3_title">Payment provider integration</p>
+                    <p class="more-item-desc" data-i18n="exp2_more_3_desc">Lead developer on the integration of a new
+                      payment provider into the system. I traveled to the client's site at their invitation to see
+                      the operation's pain points firsthand and build against them more precisely.</p>
+                  </div>
+                  <div class="more-item">
+                    <p class="more-item-title" data-i18n="exp2_more_4_title">Architecture and DevOps squad</p>
+                    <p class="more-item-desc" data-i18n="exp2_more_4_desc">Worked on the architecture and DevOps/CI-CD
+                      squad with Jenkins, improving the team's internal tooling: release and update processes, and
+                      pipeline automation.</p>
+                  </div>
+                </div>
+                <div class="more-role">
+                  <div class="more-role-head">
+                    <span class="more-role-title" data-i18n="exp2_role_b_title">Junior Developer</span>
+                    <span class="more-role-date">2022.03 — 2022.10</span>
+                  </div>
+                  <div class="more-item">
+                    <p class="more-item-desc" data-i18n="exp2_role_b_desc">Worked on features and improvements in the
+                      logistics product, including the payment provider integration I went on to lead as a mid-level
+                      developer. Contributed to the product architecture squad, improving the internal development
+                      environment: release process automation and database scripts. Reviewed the team's merge
+                      requests before they went to production. Refactored critical paths for performance in routines
+                      running over large data volumes.</p>
+                  </div>
+                </div>
+                <div class="more-role">
+                  <div class="more-role-head">
+                    <span class="more-role-title" data-i18n="exp2_role_c_title">Apprentice Developer</span>
+                    <span class="more-role-date">2021.06 — 2022.03</span>
+                  </div>
+                  <div class="more-item">
+                    <p class="more-item-desc" data-i18n="exp2_role_c_desc">First contributions to the logistics
+                      product: fixes and improvements, working with TDD, SOLID and unit test coverage.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <p class="stack">Flutter · Dart · .NET 7 · EF Core · DDD · Jenkins · TDD · SOLID</p>
           </div>
         </li>
@@ -152,7 +256,8 @@
     <!-- PROJECTS -->
     <section id="work" class="section">
       <div class="rule-head">
-        <h2 class="label" data-i18n="work_label">Projects</h2>
+        <h2 class="label"><span data-i18n="work_label">Active Projects</span><span class="status-dot"
+            aria-hidden="true"></span></h2>
         <span class="label meta" data-i18n="work_meta">Personal products</span>
       </div>
 
@@ -200,10 +305,8 @@
       </div>
 
       <div class="about">
-        <figure class="portrait">
-          <img src="assets/profile.webp" alt="Matheus Teixeira" width="600" height="600" loading="lazy"
+          <img src="assets/profile.png" alt="Matheus Teixeira" width="600" height="600" loading="lazy"
             decoding="async">
-        </figure>
         <div class="about-copy">
           <p data-i18n="about_p1">These are systems with a lot of business rules and a lot of integration surface. The
             hard part is rarely writing the feature — it is understanding the operation behind it, and changing things
@@ -254,8 +357,7 @@
     </section>
 
     <footer class="foot">
-      <p class="label">© <span id="year">2026</span> Matheus Teixeira. <span data-i18n="footer_rights">All rights
-          reserved.</span></p>
+      <p class="label">© <span id="year">2026</span> Matheus Teixeira.</p>
       <a class="label foot-top" href="#intro" data-i18n="back_to_top">Back to top ↑</a>
     </footer>
 

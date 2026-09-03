@@ -17,6 +17,10 @@
   /* The only accent on the page. Forklift beacons, hi-vis vests. */
   --signal: #F2B138;
 
+  /* One deliberate exception to the signal-only rule: green reads
+     universally as "live", amber doesn't carry that meaning. */
+  --live: #3ECF6E;
+
   --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
@@ -110,6 +114,45 @@ a {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--graphite);
+}
+
+.status-dot {
+  position: relative;
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 0.9em;
+  border-radius: 50%;
+  background: var(--live);
+  vertical-align: middle;
+}
+
+.status-dot::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--live);
+  opacity: 0.55;
+  animation: status-pulse 1.8s ease-out infinite;
+}
+
+@keyframes status-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-dot::before {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 /* ---------- Rail nav ----------
@@ -591,6 +634,105 @@ main section[id] {
   color: var(--graphite);
 }
 
+/* ---------- Entry expand ("see more") ---------- */
+.entry-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite);
+  cursor: pointer;
+  transition: color 0.18s ease;
+}
+
+.entry-toggle:hover {
+  color: var(--signal);
+}
+
+.entry-more-wrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.entry-more-wrap.is-open {
+  grid-template-rows: 1fr;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entry-more-wrap {
+    transition: none;
+  }
+}
+
+.entry-more {
+  overflow: hidden;
+}
+
+.more-role + .more-role {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+
+.more-role-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+}
+
+.more-role:first-child .more-role-head {
+  margin-top: 1rem;
+}
+
+.more-role-title {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--chalk);
+}
+
+.more-role-date {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--graphite);
+}
+
+.more-item {
+  margin: 1rem 0 0;
+}
+
+.more-role > .more-item:first-of-type {
+  margin-top: 0.6rem;
+}
+
+.more-item-title {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--chalk);
+}
+
+.more-item-desc {
+  margin: 0.3rem 0 0;
+  max-width: var(--prose);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: #B0AEA9;
+}
+
 .state {
   margin-top: 0.85rem;
 }
@@ -621,18 +763,16 @@ main section[id] {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.75rem;
-  padding: 1.75rem 0 0;
+  padding-top: 3.5rem;
 }
 
-.portrait {
-  margin: 0;
+.about > img {
   width: 190px;
-  border: 1px solid var(--rule);
-}
-
-.portrait img {
-  width: 100%;
-  filter: grayscale(1) contrast(1.05);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  justify-self: center;
+  align-self: center;
 }
 
 .about-copy p {

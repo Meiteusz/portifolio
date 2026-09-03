@@ -229,6 +229,28 @@
   });
 
   /* ============================================================
+     Entry expand ("see more")
+     ============================================================ */
+  var entryToggles = Array.prototype.slice.call(document.querySelectorAll('.entry-toggle'));
+
+  entryToggles.forEach(function (btn) {
+    var wrap = btn.nextElementSibling;
+    var panel = wrap ? wrap.querySelector('.entry-more') : null;
+    if (!panel) return;
+
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      wrap.classList.toggle('is-open', !open);
+      panel.inert = open;
+
+      var key = open ? 'see_more' : 'see_less';
+      btn.dataset.i18n = key;
+      btn.textContent = translations[currentLang][key];
+    });
+  });
+
+  /* ============================================================
      Scroll spy
      ============================================================ */
   var spyQueued = false;
