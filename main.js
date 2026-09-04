@@ -1,9 +1,10 @@
 /* ============================================================
    Matheus Teixeira — portfolio behaviour
-   1. Language (URL > storage > browser)
-   2. Split-flap hero + nav text
-   3. Scroll spy for the rail
-   4. Section reveal
+   1. Timeline (dates resolved at render time)
+   2. Language (URL > storage > browser)
+   3. Split-flap hero + nav text
+   4. Scroll spy for the rail
+   5. Section reveal
    ============================================================ */
 
 (function () {
@@ -19,6 +20,44 @@
     return reduceMotion.matches;
   }
 
+  /* ============================================================
+     Timeline — the single place a date lives. Copy in
+     translations.js never spells out a figure that ages ("5 years",
+     "since 2021"); it writes {years_experience} / {career_start_year}
+     and these are resolved against today on every render, so the
+     page still reads correctly next year with nothing to edit.
+     ============================================================ */
+
+  // First professional developer role (Benner, apprentice). Time in
+  // the field is counted from here and nowhere else.
+  var CAREER_START = '2021-06';
+
+  // Whole years elapsed since a YYYY-MM mark. Floored, so "over N
+  // years" stays true right up to the anniversary, then rolls to N+1.
+  function fullYearsSince(yearMonth) {
+    var parts = String(yearMonth).split('-');
+    var now = new Date();
+    var months =
+      (now.getFullYear() - Number(parts[0])) * 12 +
+      (now.getMonth() + 1 - Number(parts[1] || 1));
+    return Math.max(0, Math.floor(months / 12));
+  }
+
+  var TOKENS = {
+    years_experience: String(fullYearsSince(CAREER_START)),
+    career_start_year: CAREER_START.slice(0, 4),
+    current_year: String(new Date().getFullYear())
+  };
+
+  // Swaps {token} placeholders for their current value. An unknown
+  // token is left as written rather than blanked, so a typo shows up
+  // instead of quietly eating part of a sentence.
+  function fill(text) {
+    return String(text).replace(/\{(\w+)\}/g, function (match, key) {
+      return Object.prototype.hasOwnProperty.call(TOKENS, key) ? TOKENS[key] : match;
+    });
+  }
+
   /* ---------- Elements ---------- */
   var wordmarkEl = document.getElementById('wordmark');
   var roleLine = document.getElementById('roleLine');
@@ -28,6 +67,9 @@
   var langCurrent = langToggle.querySelector('.lang-current');
   var langOther = langToggle.querySelector('.lang-other');
   var metaDesc = document.getElementById('meta-description');
+  var metaOgTitle = document.getElementById('meta-og-title');
+  var metaOgDesc = document.getElementById('meta-og-description');
+  var resumeLink = document.getElementById('resumeLink');
   var railLinks = Array.prototype.slice.call(document.querySelectorAll('.rail-link'));
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
 
@@ -202,31 +244,43 @@
     var t = translations[currentLang];
 
     document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
-    document.title = t.doc_title;
-    if (metaDesc) metaDesc.setAttribute('content', t.doc_description);
+    document.title = fill(t.doc_title);
+    if (metaDesc) metaDesc.setAttribute('content', fill(t.doc_description));
+    if (metaOgTitle) metaOgTitle.setAttribute('content', fill(t.doc_title));
+    if (metaOgDesc && t.og_description) {
+      metaOgDesc.setAttribute('content', fill(t.og_description));
+    }
+
+    // Each language downloads its own file: "Resume ..." in English,
+    // "Currículo ..." in Portuguese. Encoded because both names carry
+    // spaces, and the Portuguese one an accent.
+    if (resumeLink && t.resume_file) {
+      resumeLink.setAttribute('href', encodeURI(t.resume_file));
+    }
 
     // Reading-as label and the action links flip like the role line;
     // everything else below the fold just gets the plain text swap.
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.dataset.i18n;
       if (t[key] == null) return;
+      var value = fill(t[key]);
       if (animate && FLIP_KEYS.indexOf(key) !== -1) {
-        flipTo(el, t[key]);
+        flipTo(el, value);
       } else {
-        el.textContent = t[key];
+        el.textContent = value;
       }
     });
 
     if (animate) {
-      flipTo(roleLine, t.hero_title);
-      settleWords(bioText, t.hero_text);
+      flipTo(roleLine, fill(t.hero_title));
+      settleWords(bioText, fill(t.hero_text));
     } else {
-      roleLine.textContent = t.hero_title;
-      bioText.textContent = t.hero_text;
+      roleLine.textContent = fill(t.hero_title);
+      bioText.textContent = fill(t.hero_text);
     }
 
     // Announce the settled title once, rather than every flipping glyph.
-    if (roleLive) roleLive.textContent = t.hero_title;
+    if (roleLive) roleLive.textContent = fill(t.hero_title);
 
     langCurrent.textContent = currentLang.toUpperCase();
     langOther.textContent = currentLang === 'en' ? 'PT' : 'EN';
@@ -275,7 +329,7 @@
 
       var key = open ? 'see_more' : 'see_less';
       btn.dataset.i18n = key;
-      btn.textContent = translations[currentLang][key];
+      btn.textContent = fill(translations[currentLang][key]);
     });
   });
 
@@ -397,7 +451,7 @@
      Boot
      ============================================================ */
   var yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  if (yearEl) yearEl.textContent = TOKENS.current_year;
 
   // Name doesn't change with language, so it only flips once, on boot.
   if (wordmarkEl) flipLines(wordmarkEl, ['Matheus', 'Teixeira']);

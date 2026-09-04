@@ -1,9 +1,23 @@
-/* Content for both languages. */
+/* Content for both languages.
+
+   Anything that would age is written as a placeholder rather than a
+   figure — main.js resolves them against today's date on every render:
+
+     {years_experience}   whole years since the first dev role
+     {career_start_year}  the year that count starts from
+     {current_year}       this year
+
+   Change the date once, in CAREER_START (main.js). Closed periods that
+   can never drift ("Three years at Benner", "2022 — 2025") stay literal.
+
+   resume_file points each language at its own PDF in assets/. */
 const translations = {
   en: {
     doc_title: "Matheus Teixeira — Fullstack Developer",
     doc_description:
-      "Matheus Teixeira is a fullstack developer in Blumenau, Brazil, with five years in logistics and distribution systems built on .NET, Angular, Oracle, Kafka and Flutter.",
+      "Matheus Teixeira is a fullstack developer in Blumenau, Brazil, with over {years_experience} years in logistics and distribution systems built on .NET, Angular, Oracle, Kafka and Flutter.",
+    og_description:
+      "Over {years_experience} years in logistics and distribution systems. .NET, Angular, Oracle, Kafka, Flutter.",
 
     nav_intro: "Intro",
     nav_background: "Background",
@@ -13,11 +27,13 @@ const translations = {
 
     hero_title: "Software developer. Product builder.",
     hero_text:
-      "Brazilian, with over 5 years delivering scalable, high-performance solutions for logistics companies. I also build and run my own digital products, as a way to grow beyond code.",
+      "Brazilian, with over {years_experience} years delivering scalable, high-performance solutions for logistics companies. I also build and run my own digital products, as a way to grow beyond code.",
 
     btn_email: "Send an email",
     btn_resume: "Download résumé",
     btn_github: "GitHub",
+
+    resume_file: "assets/Resume Matheus Teixeira.pdf",
 
     /* ---------- Background ---------- */
     bg_label: "Background",
@@ -103,7 +119,7 @@ const translations = {
     /* ---------- About ---------- */
     about_label: "About",
     about_p1:
-      "I've worked in fullstack software development since 2021, mostly on the .NET stack, primarily building systems for the logistics industry.",
+      "I've worked in fullstack software development since {career_start_year}, mostly on the .NET stack, primarily building systems for the logistics industry.",
     about_p2:
       "Outside of client work, I build and run my own products. One of them is a scheduling and management app for barbershops, launched in 2025. Keeping a system live with real, active users taught me things no amount of client work alone would — challenges that go well beyond code and reshaped how I think about building software.",
     about_p3:
@@ -117,7 +133,9 @@ const translations = {
   pt: {
     doc_title: "Matheus Teixeira — Desenvolvedor Fullstack",
     doc_description:
-      "Matheus Teixeira é desenvolvedor fullstack em Blumenau, com 5 anos em sistemas de logística e distribuição em .NET, Angular, Oracle, Kafka e Flutter.",
+      "Matheus Teixeira é desenvolvedor fullstack em Blumenau, com mais de {years_experience} anos em sistemas de logística e distribuição em .NET, Angular, Oracle, Kafka e Flutter.",
+    og_description:
+      "Mais de {years_experience} anos em sistemas de logística e distribuição. .NET, Angular, Oracle, Kafka, Flutter.",
 
     nav_intro: "Início",
     nav_background: "Trajetória",
@@ -127,11 +145,13 @@ const translations = {
 
     hero_title: "Desenvolvedor de software. Construtor de produtos.",
     hero_text:
-      "Brasileiro, com mais de 5 anos entregando soluções escaláveis e performáticas para empresas do setor logístico. Também construo e opero meus próprios produtos digitais, como forma de crescer além do código.",
+      "Brasileiro, com mais de {years_experience} anos entregando soluções escaláveis e performáticas para empresas do setor logístico. Também construo e opero meus próprios produtos digitais, como forma de crescer além do código.",
 
     btn_email: "Enviar e-mail",
     btn_resume: "Baixar currículo",
     btn_github: "GitHub",
+
+    resume_file: "assets/Currículo Matheus Teixeira.pdf",
 
     /* ---------- Trajetória ---------- */
     bg_label: "Trajetória",
@@ -217,7 +237,7 @@ const translations = {
     /* ---------- Sobre ---------- */
     about_label: "Sobre",
     about_p1:
-      "Atuo com desenvolvimento de software fullstack desde 2021, com foco principal na plataforma .NET. Ao longo desse período, trabalhei majoritariamente com sistemas para o setor de logística.",
+      "Atuo com desenvolvimento de software fullstack desde {career_start_year}, com foco principal na plataforma .NET. Ao longo desse período, trabalhei majoritariamente com sistemas para o setor de logística.",
     about_p2:
       "Além do trabalho como desenvolvedor, construo e opero meus próprios produtos. Um deles é um aplicativo de agenda e gestão para barbearias, lançado em 2025. Manter um sistema no ar com usuários ativos me ensinou lições que dificilmente aprenderia apenas prestando serviço para empresas, desafios que vão muito além do código e que transformaram a forma como enxergo o desenvolvimento de software.",
     about_p3:
