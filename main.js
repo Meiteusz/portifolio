@@ -1,7 +1,7 @@
 /* ============================================================
    Matheus Teixeira — portfolio behaviour
    1. Language (URL > storage > browser)
-   2. Audience switcher + split-flap role line
+   2. Split-flap hero + nav text
    3. Scroll spy for the rail
    4. Section reveal
    ============================================================ */
@@ -20,6 +20,7 @@
   }
 
   /* ---------- Elements ---------- */
+  var wordmarkEl = document.getElementById('wordmark');
   var roleLine = document.getElementById('roleLine');
   var roleLive = document.getElementById('roleLive');
   var bioText = document.getElementById('bioText');
@@ -27,22 +28,83 @@
   var langCurrent = langToggle.querySelector('.lang-current');
   var langOther = langToggle.querySelector('.lang-other');
   var metaDesc = document.getElementById('meta-description');
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   var railLinks = Array.prototype.slice.call(document.querySelectorAll('.rail-link'));
   var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
 
   var currentLang = 'en';
-  var currentAudience = 'anyone';
+
+  // data-i18n keys that split-flap on init/change, same treatment as the
+  // role line, rather than swapping in place.
+  var FLIP_KEYS = [
+    'nav_intro', 'nav_background', 'nav_work', 'nav_about', 'nav_contact',
+    'btn_email', 'btn_resume', 'btn_github'
+  ];
 
   /* ============================================================
-     Split-flap — the role line settles one glyph at a time,
-     the way a dispatch board does.
+     Split-flap — text settles one glyph at a time, the way a
+     dispatch board does. Used across the whole hero block on
+     init (and again on language change), so every element tracks
+     its own animation token: several elements can be mid-flip at
+     once without cancelling each other.
      ============================================================ */
   var GLYPHS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·+.';
-  var flipToken = 0;
+  var flipTokens = new WeakMap();
 
+  function flipChars(el, text, token) {
+    // Each glyph is its own inline-block cell, which browsers treat as
+    // freely breakable — without grouping, a line can wrap mid-word.
+    // Wrapping each word's cells in a nowrap span keeps breaks where a
+    // reader expects them, while a real space node between words (not
+    // a cell) still gives the line normal, natural break points.
+    var words = String(text).split(' ');
+    var index = 0;
+
+    words.forEach(function (word, wordIndex) {
+      var wordWrap = document.createElement('span');
+      wordWrap.className = 'flip-word';
+      el.appendChild(wordWrap);
+
+      word.split('').forEach(function (ch) {
+        var i = index++;
+        var span = document.createElement('span');
+        span.className = 'flip';
+        span.textContent = ch;
+        wordWrap.appendChild(span);
+
+        span.classList.add('is-settling');
+        var ticks = 0;
+        var total = Math.min(3 + Math.floor(i * 0.55), 18);
+
+        var timer = setInterval(function () {
+          if (flipTokens.get(el) !== token) {
+            clearInterval(timer);
+            return;
+          }
+          ticks++;
+          if (ticks >= total) {
+            clearInterval(timer);
+            span.textContent = ch;
+            span.classList.remove('is-settling');
+          } else {
+            span.textContent = GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length));
+          }
+        }, 45);
+      });
+
+      if (wordIndex < words.length - 1) {
+        index++; // keeps the cascade timing in step with the space it stands for
+        el.appendChild(document.createTextNode(' '));
+      }
+    });
+  }
+
+  // Accessible name is set up front so focus/AT reads the real text
+  // even mid-scramble; roleLine additionally hides itself via
+  // aria-hidden and announces through the roleLive region instead.
   function flipTo(el, text) {
-    var token = ++flipToken;
+    var token = (flipTokens.get(el) || 0) + 1;
+    flipTokens.set(el, token);
+    el.setAttribute('aria-label', text);
 
     if (prefersReduced()) {
       el.textContent = text;
@@ -50,34 +112,29 @@
     }
 
     el.textContent = '';
-    var chars = String(text).split('');
+    flipChars(el, text, token);
+  }
 
-    chars.forEach(function (ch, i) {
-      var span = document.createElement('span');
-      span.className = 'flip';
-      span.textContent = ch;
-      el.appendChild(span);
+  // Same idea, but for a multi-line block (the wordmark) where each
+  // line needs its own run of glyph cells joined by a real <br>.
+  function flipLines(el, lines) {
+    var token = (flipTokens.get(el) || 0) + 1;
+    flipTokens.set(el, token);
+    el.setAttribute('aria-label', lines.join(' '));
 
-      if (ch === ' ') return;
+    el.textContent = '';
 
-      span.classList.add('is-settling');
-      var ticks = 0;
-      var total = Math.min(3 + Math.floor(i * 0.55), 18);
+    if (prefersReduced()) {
+      lines.forEach(function (line, i) {
+        el.appendChild(document.createTextNode(line));
+        if (i < lines.length - 1) el.appendChild(document.createElement('br'));
+      });
+      return;
+    }
 
-      var timer = setInterval(function () {
-        if (token !== flipToken) {
-          clearInterval(timer);
-          return;
-        }
-        ticks++;
-        if (ticks >= total) {
-          clearInterval(timer);
-          span.textContent = ch;
-          span.classList.remove('is-settling');
-        } else {
-          span.textContent = GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length));
-        }
-      }, 45);
+    lines.forEach(function (line, i) {
+      flipChars(el, line, token);
+      if (i < lines.length - 1) el.appendChild(document.createElement('br'));
     });
   }
 
@@ -116,45 +173,6 @@
   }
 
   /* ============================================================
-     Audience
-     ============================================================ */
-  function renderAudience(key, animate) {
-    var copy = translations[currentLang].audiences[key];
-    if (!copy) return;
-
-    currentAudience = key;
-
-    tabs.forEach(function (btn) {
-      var on = btn.dataset.audience === key;
-      btn.classList.toggle('is-active', on);
-      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-
-    if (animate) {
-      flipTo(roleLine, copy.role);
-      settleWords(bioText, copy.bio);
-    } else {
-      roleLine.textContent = copy.role;
-      bioText.textContent = copy.bio;
-    }
-
-    // Announce the settled string once, rather than every flipping glyph.
-    if (roleLive) roleLive.textContent = copy.role;
-  }
-
-  tabs.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      if (btn.dataset.audience === currentAudience) return;
-      renderAudience(btn.dataset.audience, true);
-      try {
-        localStorage.setItem('audience', btn.dataset.audience);
-      } catch (e) {
-        /* Private browsing — the switch still works for this visit. */
-      }
-    });
-  });
-
-  /* ============================================================
      Language
      ============================================================ */
   function validLang(value) {
@@ -187,15 +205,28 @@
     document.title = t.doc_title;
     if (metaDesc) metaDesc.setAttribute('content', t.doc_description);
 
+    // Reading-as label and the action links flip like the role line;
+    // everything else below the fold just gets the plain text swap.
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.dataset.i18n;
-      if (t[key] != null) el.textContent = t[key];
+      if (t[key] == null) return;
+      if (animate && FLIP_KEYS.indexOf(key) !== -1) {
+        flipTo(el, t[key]);
+      } else {
+        el.textContent = t[key];
+      }
     });
 
-    tabs.forEach(function (btn) {
-      var copy = t.audiences[btn.dataset.audience];
-      if (copy) btn.textContent = copy.tab;
-    });
+    if (animate) {
+      flipTo(roleLine, t.hero_title);
+      settleWords(bioText, t.hero_text);
+    } else {
+      roleLine.textContent = t.hero_title;
+      bioText.textContent = t.hero_text;
+    }
+
+    // Announce the settled title once, rather than every flipping glyph.
+    if (roleLive) roleLive.textContent = t.hero_title;
 
     langCurrent.textContent = currentLang.toUpperCase();
     langOther.textContent = currentLang === 'en' ? 'PT' : 'EN';
@@ -203,8 +234,6 @@
       'aria-label',
       currentLang === 'en' ? 'Mudar para português' : 'Switch to English'
     );
-
-    renderAudience(currentAudience, animate);
 
     try {
       localStorage.setItem('lang', currentLang);
@@ -254,6 +283,31 @@
      Scroll spy
      ============================================================ */
   var spyQueued = false;
+  var lastActive = null;
+  var railList = document.querySelector('.rail-list');
+
+  // Scrolls only the nav's own horizontal track, never the page — a plain
+  // scrollIntoView() walks every scrollable ancestor including the
+  // document, which can jump the whole page under a sticky/fixed nav.
+  function scrollLinkIntoView(link) {
+    if (!railList) return;
+    var containerRect = railList.getBoundingClientRect();
+    var linkRect = link.getBoundingClientRect();
+    var margin = 16;
+    var delta = null;
+
+    if (linkRect.left < containerRect.left) {
+      delta = linkRect.left - containerRect.left - margin;
+    } else if (linkRect.right > containerRect.right) {
+      delta = linkRect.right - containerRect.right + margin;
+    }
+    if (delta == null) return;
+
+    railList.scrollTo({
+      left: railList.scrollLeft + delta,
+      behavior: prefersReduced() ? 'auto' : 'smooth'
+    });
+  }
 
   function spy() {
     spyQueued = false;
@@ -268,9 +322,19 @@
       active = sections[sections.length - 1].id;
     }
 
+    var activeLink = null;
     railLinks.forEach(function (link) {
-      link.classList.toggle('is-active', link.getAttribute('href') === '#' + active);
+      var on = link.getAttribute('href') === '#' + active;
+      link.classList.toggle('is-active', on);
+      if (on) activeLink = link;
     });
+
+    // On the horizontally-scrolling mobile/tablet nav, keep the current
+    // section's tab in view instead of leaving it scrolled off-screen.
+    if (activeLink && active !== lastActive) {
+      lastActive = active;
+      scrollLinkIntoView(activeLink);
+    }
   }
 
   window.addEventListener(
@@ -335,14 +399,8 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  try {
-    var savedAudience = localStorage.getItem('audience');
-    if (savedAudience && translations.en.audiences[savedAudience]) {
-      currentAudience = savedAudience;
-    }
-  } catch (e) {
-    /* Default audience is fine. */
-  }
+  // Name doesn't change with language, so it only flips once, on boot.
+  if (wordmarkEl) flipLines(wordmarkEl, ['Matheus', 'Teixeira']);
 
   applyLang(preferredLang(), true, false);
   spy();

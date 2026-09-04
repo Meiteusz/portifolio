@@ -1,5 +1,4 @@
-/* Content for both languages.
-   `audiences` powers the role selector in the hero: same person, three framings. */
+/* Content for both languages. */
 const translations = {
   en: {
     doc_title: "Matheus Teixeira — Fullstack Developer",
@@ -12,25 +11,9 @@ const translations = {
     nav_about: "About",
     nav_contact: "Contact",
 
-    reading_as: "Reading as",
-
-    audiences: {
-      anyone: {
-        tab: "Anyone",
-        role: "Software that moves things",
-        bio: "I build the systems behind logistics and distribution — warehouse stock, automatic store replenishment, product catalogues. Five years of it, mostly .NET and Angular, with Flutter on mobile. On the side I build and run my own products — one of them live on both stores with paying subscribers."
-      },
-      recruiters: {
-        tab: "Recruiters",
-        role: "Fullstack developer, 5 years",
-        bio: "Mid-level developer at Grupo Autoglass working in .NET, Angular, Oracle and Kafka. I designed the board that tracks more than 25,000 SKUs and retired a spreadsheet five people maintained by hand. At Benner I went from apprentice to mid-level in 16 months and built the Flutter checklist app that issues over 5,000 checklists a month. English at professional working level."
-      },
-      engineers: {
-        tab: "Engineers",
-        role: ".NET, Kafka, Oracle, Flutter",
-        bio: "Business-rule heavy systems with a lot of integration surface. I moved a synchronous addressing algorithm onto a Kafka FIFO queue and gave operators back a five-minute wait; tuned Oracle queries with CTEs behind Quartz jobs and a materialised view. DDD, EF Core, xUnit, Azure DevOps. I also run my own app in production, which taught me most of what I know about what breaks after the deploy."
-      }
-    },
+    hero_title: "Software developer. Product builder.",
+    hero_text:
+      "Brazilian, with over 5 years delivering scalable, high-performance solutions for logistics companies. I also build and run my own digital products, as a way to grow beyond code.",
 
     btn_email: "Send an email",
     btn_resume: "Download résumé",
@@ -38,15 +21,24 @@ const translations = {
 
     /* ---------- Background ---------- */
     bg_label: "Background",
-    bg_meta: "5 years · 2021 — now",
     now: "Now",
 
     exp_role_1: "Mid-level Developer",
-    exp_desc_1:
-      "Across the product platform, WMS and DRP teams. Built the SKU Kanban, moved WMS addressing off the synchronous path, and helped ship the DRP feature that returns idle stock between units instead of raising a new purchase order.",
+    exp_desc_1: "Across the Product Platform, WMS and DRP teams.",
+    exp_desc_1_b1:
+      "Designed and automated the SKU Kanban, previously 100% manually managed in Excel spreadsheets and requiring 5 people.",
+    exp_desc_1_b2:
+      "Removed WMS addressing from the synchronous flow, saving warehouse staff hundreds of hours.",
+    exp_desc_1_b3:
+      "Worked on the DRP feature that redistributes idle stock between units instead of raising a new purchase order, recovering more than 10 million in stranded inventory.",
     exp_role_2: "Apprentice → Junior → Mid-level",
-    exp_desc_2:
-      "Three years on a logistics product, reaching mid-level in 16 months. Technical reference for the squad, reviewing the team's code and backing both technical and business-rule decisions. Lead developer on a payment partner integration — I travelled to the client's city, at their invitation, to understand the operation first hand. Also worked in the architecture and DevOps squad on Jenkins CI/CD and pipeline automation.",
+    exp_desc_2: "Three years on a logistics product, reaching mid-level in 16 months.",
+    exp_desc_2_b1:
+      "Technical reference for the squad, reviewing the team's code and backing technical and business-rule decisions.",
+    exp_desc_2_b2:
+      "Lead developer on a payment partner integration — I even travelled to the client's city, at their invitation, to understand the operation first hand.",
+    exp_desc_2_b3:
+      "Last major delivery: led a fully customizable travel logistics checklist app from planning onward, integrated with the company's other systems and used to issue more than 5,000 checklists a month.",
 
     see_more: "See more ↓",
     see_less: "See less ↑",
@@ -67,7 +59,9 @@ const translations = {
     exp2_role_a_title: "Mid-Level Developer",
     exp2_more_1_title: "BL Mobile — logistics checklists",
     exp2_more_1_desc:
-      "Built the app that digitized transport checklists, integrated directly with the core system and replacing a paper process. I worked on the mobile app end to end and on the API and its layered architecture. In use across several of the client's branches, issuing 5,000+ checklists a month. Stack — API: .NET 7, EF Core, DDD, RESTful API, unit tests. Mobile: Flutter, Dart, dio, provider, shared_preferences, shipped to Google Play.",
+      "Built the app that digitized transport checklists, integrated directly with the core system and replacing a paper process. The checklists were fully customizable, supporting different question and answer types set up by analysts and answered by drivers. I worked on the mobile app end to end and on the API and its layered architecture. In use across several of the client's branches, issuing 5,000+ checklists a month.",
+    exp2_more_1_stack_api: "Stack — API: .NET 7, EF Core, DDD, RESTful API, unit tests.",
+    exp2_more_1_stack_mobile: "Mobile: Flutter, Dart, dio, provider, shared_preferences, shipped to Google Play.",
     exp2_more_2_title: "Tech lead for the squad",
     exp2_more_2_desc:
       "I was the squad's technical point of contact, both for engineering and for the logistics domain. I reviewed the team's code and backed the other developers on technical decisions and on questions about the product's business rules, keeping code standards and unit test coverage consistent across our work.",
@@ -93,25 +87,23 @@ const translations = {
 
     /* ---------- Projects ---------- */
     work_label: "Active Projects",
-    work_meta: "Personal products",
 
     proj_aura_cat: "Scheduling",
     proj_aura_note:
-      "Scheduling and management for barbershops. Live on both stores, with subscription plans and paying users.",
+      "A scheduling and management app for barbershops. Live on both stores, with subscription plans and paying users.",
 
     proj_diff_cat: "Language",
     proj_diff_note:
-      "English review treated as code review — a diff of what a native speaker would have said, and the reason behind each change.",
+      "English review treated as code review, for people in tech who won't settle for just being \"understood.\"",
 
     proj_post_cat: "Content",
     proj_post_note:
-      "Turns an app screenshot into a finished Instagram post, with your product's own branding applied.",
+      "Turns your app's screenshot into a ready-to-post Instagram graphic. Built to make creating social content for Aura faster and easier.",
 
     /* ---------- About ---------- */
     about_label: "About",
-    about_meta: "Blumenau, SC · UTC−3",
     about_p1:
-      "I've been building software since 2021, mostly on the .NET stack, working primarily on systems for the logistics industry.",
+      "I've worked in fullstack software development since 2021, mostly on the .NET stack, primarily building systems for the logistics industry.",
     about_p2:
       "Outside of client work, I build and run my own products. One of them is a scheduling and management app for barbershops, launched in 2025. Keeping a system live with real, active users taught me things no amount of client work alone would — challenges that go well beyond code and reshaped how I think about building software.",
     about_p3:
@@ -133,25 +125,9 @@ const translations = {
     nav_about: "Sobre",
     nav_contact: "Contato",
 
-    reading_as: "Lendo como",
-
-    audiences: {
-      anyone: {
-        tab: "Qualquer um",
-        role: "Software que move coisas",
-        bio: "Construo os sistemas por trás da logística e da distribuição — estoque de armazém, abastecimento automático de lojas, catálogo de produtos. São 5 anos disso, principalmente .NET e Angular, com Flutter no mobile. Fora do trabalho, construo e mantenho meus próprios produtos — um deles no ar nas duas lojas, com assinantes pagantes."
-      },
-      recruiters: {
-        tab: "Recrutadores",
-        role: "Desenvolvedor fullstack, 5 anos",
-        bio: "Desenvolvedor pleno no Grupo Autoglass, atuando com .NET, Angular, Oracle e Kafka. Projetei o quadro que acompanha mais de 25 mil SKUs e aposentou uma planilha mantida à mão por um time de 5 pessoas. Na Benner, saí de aprendiz a pleno em 16 meses e construí o app de checklists em Flutter que emite mais de 5 mil checklists por mês. Inglês em nível profissional."
-      },
-      engineers: {
-        tab: "Devs",
-        role: ".NET, Kafka, Oracle, Flutter",
-        bio: "Sistemas com muita regra de negócio e muita superfície de integração. Tirei o algoritmo de endereçamento do fluxo síncrono para uma fila FIFO no Kafka e devolvi ao operador uma espera de cinco minutos; otimizei consultas Oracle com CTEs por trás de jobs Quartz e uma view materializada. DDD, EF Core, xUnit, Azure DevOps. Também mantenho meu próprio app em produção, que me ensinou quase tudo que sei sobre o que quebra depois do deploy."
-      }
-    },
+    hero_title: "Desenvolvedor de software. Construtor de produtos.",
+    hero_text:
+      "Brasileiro, com mais de 5 anos entregando soluções escaláveis e performáticas para empresas do setor logístico. Também construo e opero meus próprios produtos digitais, como forma de crescer além do código.",
 
     btn_email: "Enviar e-mail",
     btn_resume: "Baixar currículo",
@@ -159,15 +135,24 @@ const translations = {
 
     /* ---------- Trajetória ---------- */
     bg_label: "Trajetória",
-    bg_meta: "5 anos · 2021 — hoje",
     now: "Hoje",
 
     exp_role_1: "Desenvolvedor Pleno",
-    exp_desc_1:
-      "Passagem pelos times de plataforma de produtos, WMS e DRP. Projetei o Kanban de SKUs, tirei o endereçamento do WMS do fluxo síncrono e participei da feature do DRP que devolve estoque encalhado entre unidades em vez de gerar uma compra nova.",
+    exp_desc_1: "Passagem pelos times de Plataforma de Produtos, WMS e DRP.",
+    exp_desc_1_b1:
+      "Projetei e automatizei o Kanban de SKUs, que antes era 100% gerenciado manualmente em planilhas Excel e exigia 5 pessoas.",
+    exp_desc_1_b2:
+      "Removi o endereçamento do WMS do fluxo síncrono, economizando centenas de horas dos estoquistas.",
+    exp_desc_1_b3:
+      "Participei da feature do DRP que redistribui estoque encalhado entre unidades em vez de gerar uma compra nova, recuperando mais de 10 milhões em produtos parados.",
     exp_role_2: "Aprendiz → Júnior → Pleno",
-    exp_desc_2:
-      "Três anos em produto logístico, chegando a pleno em 16 meses. Referência técnica da squad, revisando o código do time e apoiando decisões técnicas e de regra de negócio. Desenvolvedor principal da integração de um parceiro de pagamento — fui até a cidade do cliente, a convite dele, para entender a operação de perto. Também atuei na squad de arquitetura e DevOps, com CI/CD em Jenkins e automação de pipeline.",
+    exp_desc_2: "Três anos em produto logístico, chegando a pleno em 16 meses.",
+    exp_desc_2_b1:
+      "Referência técnica da squad, revisando o código do time e apoiando decisões técnicas e de regra de negócio.",
+    exp_desc_2_b2:
+      "Desenvolvedor principal da integração de um parceiro de pagamento, cheguei até a ir na cidade do cliente, a convite dele, para entender a operação de perto.",
+    exp_desc_2_b3:
+      "Última grande entrega: liderei desde o planejamento um aplicativo de checklist logístico de viagem, totalmente personalizável e integrado aos demais sistemas da empresa, usado para gerar mais de 5 mil checklists por mês.",
 
     see_more: "Ver detalhes ↓",
     see_less: "Ver menos ↑",
@@ -188,7 +173,9 @@ const translations = {
     exp2_role_a_title: "Analista Desenvolvedor Pleno",
     exp2_more_1_title: "BL Mobile — checklists logísticos",
     exp2_more_1_desc:
-      "Construí o app que digitalizou os checklists de transporte logístico, com integração direta ao sistema, substituindo o processo manual. Atuei na criação e estruturação do mobile e também na API e sua arquitetura em camadas. Em uso em várias filiais do cliente, emitindo mais de 5 mil checklists por mês. Stack — API: .NET 7, EF Core, DDD, API RESTful, testes unitários. Mobile: Flutter, Dart, dio, provider, shared_preferences, publicado na Google Play.",
+      "Construí o app que digitalizou os checklists de transporte logístico, com integração direta ao sistema, substituindo o processo manual. Os checklists eram totalmente personalizáveis incluindo diferentes tipos de perguntas e respostas que eram feitas pelos analistas e respondidos pelos motoristas. Atuei na criação e estruturação do mobile e também na API e sua arquitetura em camadas. Em uso em várias filiais do cliente, emitindo mais de 5 mil checklists por mês.",
+    exp2_more_1_stack_api: "Stack — API: .NET 7, EF Core, DDD, API RESTful, testes unitários.",
+    exp2_more_1_stack_mobile: "Mobile: Flutter, Dart, dio, provider, shared_preferences, publicado na Google Play.",
     exp2_more_2_title: "Referência técnica da squad",
     exp2_more_2_desc:
       "Fui RT da squad, por conhecimento técnico e do domínio de logística. Revisava o código dos desenvolvedores do time e servia de apoio nas decisões técnicas e nas dúvidas de regra de negócio do produto, mantendo padrão de código e cobertura de testes unitários nas entregas.",
@@ -214,25 +201,23 @@ const translations = {
 
     /* ---------- Projetos ---------- */
     work_label: "Projetos ativos",
-    work_meta: "Produtos próprios",
 
     proj_aura_cat: "Agenda",
     proj_aura_note:
-      "Agenda e gestão para barbearias. No ar nas duas lojas, com planos de assinatura e usuários pagantes.",
+      "App de agenda e gestão para barbearias. No ar nas duas lojas, com planos de assinatura e usuários pagantes.",
 
     proj_diff_cat: "Idioma",
     proj_diff_note:
-      "Revisão de inglês tratada como code review — um diff do que soaria diferente na boca de um nativo, e o motivo de cada troca.",
+      "Revisão de inglês tratada como code review, pra quem trabalha com tecnologia e não se contenta em só \"ser entendido\".",
 
     proj_post_cat: "Conteúdo",
     proj_post_note:
-      "Transforma o print do seu app em um post pronto para o Instagram, com a identidade do seu produto aplicada.",
+      "Transforma o print do seu app em um post pronto para o Instagram. Foi criado com o objetivo de facilitar e agilizar a criação de conteúdo sobre o Aura para as redes sociais.",
 
     /* ---------- Sobre ---------- */
     about_label: "Sobre",
-    about_meta: "Blumenau, SC · UTC−3",
     about_p1:
-      "Atuo com desenvolvimento de software desde 2021, com foco principal na plataforma .NET. Ao longo desse período, trabalhei majoritariamente com sistemas para o setor de logística.",
+      "Atuo com desenvolvimento de software fullstack desde 2021, com foco principal na plataforma .NET. Ao longo desse período, trabalhei majoritariamente com sistemas para o setor de logística.",
     about_p2:
       "Além do trabalho como desenvolvedor, construo e opero meus próprios produtos. Um deles é um aplicativo de agenda e gestão para barbearias, lançado em 2025. Manter um sistema no ar com usuários ativos me ensinou lições que dificilmente aprenderia apenas prestando serviço para empresas, desafios que vão muito além do código e que transformaram a forma como enxergo o desenvolvimento de software.",
     about_p3:

@@ -168,18 +168,32 @@ a {
   border-bottom: 1px solid var(--rule);
 }
 
-.rail-list {
+/* Keeps the nav list and the language toggle as one row that's centred
+   and capped like the rest of the page, while .rail's own background
+   stays full-bleed behind it. */
+.rail-inner {
   display: flex;
-  flex-direction: row;
-  gap: 1.4rem;
+  align-items: center;
   max-width: var(--measure);
   margin: 0 auto;
-  /* Right padding keeps the last item clear of the language toggle. */
-  padding: 0.95rem calc(var(--gutter) + 5.5rem) 0.95rem var(--gutter);
+}
+
+.rail-list {
+  display: flex;
+  flex: 1 1 auto;
+  /* Lets the list shrink below its content width instead of pushing the
+     toggle off the edge — that's what makes it scrollable, not overlapped. */
+  min-width: 0;
+  gap: 1.4rem;
+  margin: 0;
+  padding: 0.95rem 1rem 0.95rem var(--gutter);
   list-style: none;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  /* Fades the edges so a scrollable nav reads as scrollable, not cut off. */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 1.25rem, black calc(100% - 1.25rem), transparent);
+  mask-image: linear-gradient(to right, transparent, black 1.25rem, black calc(100% - 1.25rem), transparent);
 }
 
 .rail-list::-webkit-scrollbar {
@@ -212,11 +226,11 @@ a {
 
 /* ---------- Language toggle ---------- */
 .lang-toggle {
-  position: fixed;
-  /* Sits centred inside the sticky bar until the rail moves off to the side. */
-  top: 0.6rem;
-  right: var(--gutter);
-  z-index: 50;
+  /* A normal flex sibling of the nav list inside the sticky bar — it never
+     overlaps nav text this way. Goes back to a fixed, independent position
+     once the rail becomes a floating sidebar (see the wide-viewport query). */
+  flex: none;
+  margin-right: var(--gutter);
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
@@ -289,58 +303,20 @@ main section[id] {
   white-space: pre;
 }
 
+/* Keeps a word's cells on one line — the line can still wrap between
+   words, just never in the middle of one. */
+.flip-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .flip.is-settling {
   color: var(--graphite);
 }
 
-/* ---------- Audience switcher ---------- */
-.switcher {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1rem;
-  margin: 2.5rem 0 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--rule);
-}
-
-.switcher-label {
-  flex: none;
-}
-
-.switcher-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.tab {
-  padding: 0.4rem 0.85rem;
-  background: transparent;
-  border: 1px solid var(--rule);
-  color: var(--graphite);
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: color 0.18s ease, border-color 0.18s ease;
-}
-
-.tab:hover {
-  color: var(--chalk);
-  border-color: var(--rule-lit);
-}
-
-.tab.is-active {
-  color: var(--signal);
-  border-color: var(--signal);
-}
-
 .bio {
   max-width: var(--prose);
-  margin: 1.5rem 0 0;
+  margin: 2rem 0 0;
   font-size: 1.0625rem;
   line-height: 1.7;
   color: #B9B7B2;
@@ -361,6 +337,9 @@ main section[id] {
 }
 
 .action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   padding: 0.7rem 1.15rem;
   border: 1px solid var(--rule-lit);
   color: var(--chalk);
@@ -371,6 +350,12 @@ main section[id] {
   text-transform: uppercase;
   text-decoration: none;
   transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+
+.action svg {
+  width: 14px;
+  height: 14px;
+  flex: none;
 }
 
 .action:hover {
@@ -435,19 +420,12 @@ main section[id] {
   transform: none;
 }
 
-/* The rule carries real metadata, not a decorative counter. */
 .rule-head {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
   gap: 1rem;
   padding-top: 0.9rem;
   border-top: 1px solid var(--rule-lit);
-}
-
-.rule-head .meta {
-  text-align: right;
-  color: #565A61;
 }
 
 .sub-head {
@@ -627,6 +605,36 @@ main section[id] {
   color: #B0AEA9;
 }
 
+.entry-bullets {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  max-width: var(--prose);
+  list-style: none;
+}
+
+.entry-bullets li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.9688rem;
+  line-height: 1.65;
+  color: #B0AEA9;
+}
+
+.entry-bullets li+li {
+  margin-top: 0.5rem;
+}
+
+.entry-bullets li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.6em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--signal);
+}
+
 .stack {
   margin: 0.85rem 0 0;
   font-family: var(--mono);
@@ -732,6 +740,19 @@ main section[id] {
   font-size: 0.9375rem;
   line-height: 1.65;
   color: #B0AEA9;
+}
+
+.more-item-stack {
+  margin: 0.6rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: var(--graphite);
+}
+
+.more-item-stack span {
+  display: block;
 }
 
 .state {
@@ -852,9 +873,10 @@ main section[id] {
   }
 
   .entry-key {
-    flex-direction: column;
-    gap: 0.25rem;
+    flex-wrap: nowrap;
+    gap: 0.4rem;
     padding-top: 0.35rem;
+    white-space: nowrap;
   }
 
   /* Index, name, note and arrow settle into columns. */
@@ -886,13 +908,28 @@ main section[id] {
 /* Wide enough for the shell plus a margin the rail can live in. */
 @media (min-width: 84rem) {
   .rail {
+    /* Centred with flex rather than a transform — a transformed ancestor
+       would redefine the containing block for .lang-toggle's
+       position:fixed, since it's nested inside .rail on narrower screens.
+       This box spans the full viewport height to center its content, so
+       pointer-events is disabled on the empty space above/below it. */
     position: fixed;
     left: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
     background: none;
     backdrop-filter: none;
     border-bottom: 0;
+  }
+
+  .rail-inner {
+    pointer-events: auto;
+    display: block;
+    max-width: none;
+    margin: 0;
   }
 
   .rail-list {
@@ -902,6 +939,8 @@ main section[id] {
     margin: 0;
     padding: 0;
     overflow: visible;
+    -webkit-mask-image: none;
+    mask-image: none;
   }
 
   .rail-link.is-active {
@@ -909,7 +948,11 @@ main section[id] {
   }
 
   .lang-toggle {
+    position: fixed;
     top: 1.5rem;
+    right: var(--gutter);
+    z-index: 50;
+    margin-right: 0;
   }
 
   main section[id] {

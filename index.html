@@ -23,7 +23,7 @@
     href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=38">
 </head>
 
 <body>
@@ -31,55 +31,62 @@
 
   <!-- Sticky top bar; becomes a fixed vertical rail on wide screens. -->
   <nav class="rail" aria-label="Sections">
-    <ul class="rail-list">
-      <li><a href="#intro" class="rail-link is-active" data-i18n="nav_intro">Intro</a></li>
-      <li><a href="#background" class="rail-link" data-i18n="nav_background">Background</a></li>
-      <li><a href="#work" class="rail-link" data-i18n="nav_work">Projects</a></li>
-      <li><a href="#about" class="rail-link" data-i18n="nav_about">About</a></li>
-      <li><a href="#contact" class="rail-link" data-i18n="nav_contact">Contact</a></li>
-    </ul>
-  </nav>
+    <div class="rail-inner">
+      <ul class="rail-list">
+        <li><a href="#intro" class="rail-link is-active" data-i18n="nav_intro">Intro</a></li>
+        <li><a href="#background" class="rail-link" data-i18n="nav_background">Background</a></li>
+        <li><a href="#work" class="rail-link" data-i18n="nav_work">Projects</a></li>
+        <li><a href="#about" class="rail-link" data-i18n="nav_about">About</a></li>
+        <li><a href="#contact" class="rail-link" data-i18n="nav_contact">Contact</a></li>
+      </ul>
 
-  <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
-    <span class="lang-current">EN</span>
-    <span class="lang-sep">/</span>
-    <span class="lang-other">PT</span>
-  </button>
+      <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+        <span class="lang-current">EN</span>
+        <span class="lang-sep">/</span>
+        <span class="lang-other">PT</span>
+      </button>
+    </div>
+  </nav>
 
   <main class="shell">
 
     <!-- INTRO -->
     <section id="intro" class="intro">
-      <h1 class="wordmark">Matheus<br>Teixeira</h1>
+      <h1 class="wordmark" id="wordmark">Matheus<br>Teixeira</h1>
 
-      <!-- Signature: flips like a dispatch board when the audience changes.
+      <!-- Signature: flips like a dispatch board on load and language change.
            The animated glyphs are hidden from assistive tech; only the settled
            string is announced, once, through the live region beside it. -->
       <p class="role">
-        <span id="roleLine" aria-hidden="true">Software that moves things</span>
+        <span id="roleLine" aria-hidden="true">Software developer. Product builder.</span>
         <span class="sr-only" id="roleLive" aria-live="polite"></span>
       </p>
 
-      <div class="switcher">
-        <span class="label switcher-label" id="switcherLabel" data-i18n="reading_as">Reading as</span>
-        <div class="switcher-tabs" role="group" aria-labelledby="switcherLabel">
-          <button type="button" class="tab is-active" aria-pressed="true" data-audience="anyone">Anyone</button>
-          <button type="button" class="tab" aria-pressed="false" data-audience="recruiters">Recruiters</button>
-          <button type="button" class="tab" aria-pressed="false" data-audience="engineers">Engineers</button>
-        </div>
-      </div>
-
-      <p class="bio" id="bioText">I build the systems behind logistics and distribution — warehouse stock, automatic
-        store replenishment, product catalogues. Five years of it, mostly .NET and Angular, with Flutter on mobile. On
-        the side I build and run my own products — one of them live on both stores with paying subscribers.</p>
+      <p class="bio" id="bioText">Brazilian, with over 5 years delivering scalable, high-performance solutions for
+        logistics companies. I also build and run my own digital products, as a way to grow beyond code.</p>
 
       <div class="actions">
-        <a class="action action-primary" href="mailto:contato.matheuswt@gmail.com" data-i18n="btn_email">Send an
-          email</a>
-        <a class="action" href="assets/resume.pdf" target="_blank" rel="noopener" data-i18n="btn_resume">Download
-          résumé</a>
-        <a class="action" href="https://github.com/Meiteusz" target="_blank" rel="noopener"
-          data-i18n="btn_github">GitHub</a>
+        <a class="action action-primary" href="assets/resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M12 3a1 1 0 0 1 1 1v9.59l2.8-2.8a1 1 0 1 1 1.4 1.42l-4.5 4.5a1 1 0 0 1-1.4 0l-4.5-4.5a1 1 0 1 1 1.4-1.42l2.8 2.8V4a1 1 0 0 1 1-1zM4 19a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1z" />
+          </svg>
+          <span data-i18n="btn_resume">Download résumé</span>
+        </a>
+        <a class="action" href="mailto:contato.matheuswt@gmail.com">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.2.5 7.8 5.85L19.8 6H4.2zM20 7.9l-7.4 5.55a1 1 0 0 1-1.2 0L4 7.9V18h16V7.9z" />
+          </svg>
+          <span data-i18n="btn_email">Send an email</span>
+        </a>
+        <a class="action" href="https://github.com/Meiteusz" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor"
+              d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.2c-3.34.72-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.62-2.8 5.64-5.48 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z" />
+          </svg>
+          <span data-i18n="btn_github">GitHub</span>
+        </a>
       </div>
     </section>
 
@@ -87,7 +94,6 @@
     <section id="background" class="section">
       <div class="rule-head">
         <h2 class="label" data-i18n="bg_label">Background</h2>
-        <span class="label meta" data-i18n="bg_meta">5 years · 2021 — now</span>
       </div>
 
       <ol class="ledger">
@@ -101,9 +107,15 @@
               <a href="https://www.grupoautoglass.com.br/" target="_blank" rel="noopener">Grupo Autoglass</a>
             </h3>
             <p class="entry-role" data-i18n="exp_role_1">Mid-level Developer</p>
-            <p class="entry-desc" data-i18n="exp_desc_1">Across the product platform, WMS and DRP teams. Built the SKU
-              Kanban, moved WMS addressing off the synchronous path, and helped ship the DRP feature that returns idle
-              stock between units instead of raising a new purchase order.</p>
+            <p class="entry-desc" data-i18n="exp_desc_1">Across the Product Platform, WMS and DRP teams.</p>
+            <ul class="entry-bullets">
+              <li data-i18n="exp_desc_1_b1">Designed and automated the SKU Kanban, previously 100% manually managed
+                in Excel spreadsheets and requiring 5 people.</li>
+              <li data-i18n="exp_desc_1_b2">Removed WMS addressing from the synchronous flow, saving warehouse staff
+                hundreds of hours.</li>
+              <li data-i18n="exp_desc_1_b3">Worked on the DRP feature that redistributes idle stock between units
+                instead of raising a new purchase order, recovering more than 10 million in stranded inventory.</li>
+            </ul>
             <button type="button" class="entry-toggle" aria-expanded="false" aria-controls="entry-more-1"
               data-i18n="see_more">See more ↓</button>
             <div class="entry-more-wrap">
@@ -158,10 +170,16 @@
             <h3 class="entry-title">Benner</h3>
             <p class="entry-role" data-i18n="exp_role_2">Apprentice → Junior → Mid-level</p>
             <p class="entry-desc" data-i18n="exp_desc_2">Three years on a logistics product, reaching mid-level in 16
-              months. Technical reference for the squad, reviewing the team's code and backing both technical and
-              business-rule decisions. Lead developer on a payment partner integration — I travelled to the client's
-              city, at their invitation, to understand the operation first hand. Also worked in the architecture and
-              DevOps squad on Jenkins CI/CD and pipeline automation.</p>
+              months.</p>
+            <ul class="entry-bullets">
+              <li data-i18n="exp_desc_2_b1">Technical reference for the squad, reviewing the team's code and backing
+                technical and business-rule decisions.</li>
+              <li data-i18n="exp_desc_2_b2">Lead developer on a payment partner integration — I even travelled to the
+                client's city, at their invitation, to understand the operation first hand.</li>
+              <li data-i18n="exp_desc_2_b3">Last major delivery: led a fully customizable travel logistics checklist
+                app from planning onward, integrated with the company's other systems and used to issue more than
+                5,000 checklists a month.</li>
+            </ul>
             <button type="button" class="entry-toggle" aria-expanded="false" aria-controls="entry-more-2"
               data-i18n="see_more">See more ↓</button>
             <div class="entry-more-wrap">
@@ -174,11 +192,17 @@
                   <div class="more-item">
                     <p class="more-item-title" data-i18n="exp2_more_1_title">BL Mobile — logistics checklists</p>
                     <p class="more-item-desc" data-i18n="exp2_more_1_desc">Built the app that digitized transport
-                      checklists, integrated directly with the core system and replacing a paper process. I worked on
-                      the mobile app end to end and on the API and its layered architecture. In use across several of
-                      the client's branches, issuing 5,000+ checklists a month. Stack — API: .NET 7, EF Core, DDD,
-                      RESTful API, unit tests. Mobile: Flutter, Dart, dio, provider, shared_preferences, shipped to
-                      Google Play.</p>
+                      checklists, integrated directly with the core system and replacing a paper process. The
+                      checklists were fully customizable, supporting different question and answer types set up by
+                      analysts and answered by drivers. I worked on the mobile app end to end and on the API and its
+                      layered architecture. In use across several of the client's branches, issuing 5,000+ checklists
+                      a month.</p>
+                    <p class="more-item-stack">
+                      <span data-i18n="exp2_more_1_stack_api">Stack — API: .NET 7, EF Core, DDD, RESTful API, unit
+                        tests.</span>
+                      <span data-i18n="exp2_more_1_stack_mobile">Mobile: Flutter, Dart, dio, provider,
+                        shared_preferences, shipped to Google Play.</span>
+                    </p>
                   </div>
                   <div class="more-item">
                     <p class="more-item-title" data-i18n="exp2_more_2_title">Tech lead for the squad</p>
@@ -226,7 +250,7 @@
                 </div>
               </div>
             </div>
-            <p class="stack">Flutter · Dart · .NET 7 · EF Core · DDD · Jenkins · TDD · SOLID</p>
+            <p class="stack">.NET 7 · C# · Flutter · Dart · EF Core · DDD · Jenkins · TDD · SOLID</p>
           </div>
         </li>
       </ol>
@@ -258,7 +282,6 @@
       <div class="rule-head">
         <h2 class="label"><span data-i18n="work_label">Active Projects</span><span class="status-dot"
             aria-hidden="true"></span></h2>
-        <span class="label meta" data-i18n="work_meta">Personal products</span>
       </div>
 
       <ol class="projects">
@@ -267,30 +290,32 @@
             <span class="project-key label"><span class="project-num">01</span> / <span
                 data-i18n="proj_aura_cat">Scheduling</span></span>
             <h3 class="project-name">Aura</h3>
-            <p class="project-note" data-i18n="proj_aura_note">Scheduling and management for barbershops. Live on both
-              stores, with subscription plans and paying users.</p>
+            <p class="project-note" data-i18n="proj_aura_note">A scheduling and management app for barbershops. Live
+              on both stores, with subscription plans and paying users.</p>
             <span class="project-arrow" aria-hidden="true">→</span>
           </a>
         </li>
 
         <li>
-          <a class="project" data-accent="diffluent" href="https://diffluent.vercel.app/" target="_blank" rel="noopener">
+          <a class="project" data-accent="diffluent" href="https://diffluent.vercel.app/" target="_blank"
+            rel="noopener">
             <span class="project-key label"><span class="project-num">02</span> / <span
                 data-i18n="proj_diff_cat">Language</span></span>
             <h3 class="project-name">Diffluent</h3>
-            <p class="project-note" data-i18n="proj_diff_note">English review treated as code review — a diff of what a
-              native speaker would have said, and the reason behind each change.</p>
+            <p class="project-note" data-i18n="proj_diff_note">English review treated as code review, for people in
+              tech who won't settle for just being "understood."</p>
             <span class="project-arrow" aria-hidden="true">→</span>
           </a>
         </li>
 
         <li>
-          <a class="project" data-accent="postlight" href="https://www.getpostlight.com/" target="_blank" rel="noopener">
+          <a class="project" data-accent="postlight" href="https://www.getpostlight.com/" target="_blank"
+            rel="noopener">
             <span class="project-key label"><span class="project-num">03</span> / <span
                 data-i18n="proj_post_cat">Content</span></span>
             <h3 class="project-name">Postlight</h3>
-            <p class="project-note" data-i18n="proj_post_note">Turns an app screenshot into a finished Instagram post,
-              with your product's own branding applied.</p>
+            <p class="project-note" data-i18n="proj_post_note">Turns your app's screenshot into a ready-to-post
+              Instagram graphic. Built to make creating social content for Aura faster and easier.</p>
             <span class="project-arrow" aria-hidden="true">→</span>
           </a>
         </li>
@@ -301,12 +326,10 @@
     <section id="about" class="section">
       <div class="rule-head">
         <h2 class="label" data-i18n="about_label">About</h2>
-        <span class="label meta" data-i18n="about_meta">Blumenau, SC · UTC−3</span>
       </div>
 
       <div class="about">
-          <img src="assets/profile.png" alt="Matheus Teixeira" width="600" height="600" loading="lazy"
-            decoding="async">
+        <img src="assets/profile.png" alt="Matheus Teixeira" width="600" height="600" loading="lazy" decoding="async">
         <div class="about-copy">
           <p data-i18n="about_p1">These are systems with a lot of business rules and a lot of integration surface. The
             hard part is rarely writing the feature — it is understanding the operation behind it, and changing things
@@ -363,8 +386,8 @@
 
   </main>
 
-  <script src="translations.js?v=26"></script>
-  <script src="main.js?v=26"></script>
+  <script src="translations.js?v=38"></script>
+  <script src="main.js?v=38"></script>
 </body>
 
 </html>
