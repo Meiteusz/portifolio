@@ -111,11 +111,11 @@ const translations = {
     about_label: "About",
     about_meta: "Blumenau, SC · UTC−3",
     about_p1:
-      "These are systems with a lot of business rules and a lot of integration surface. The hard part is rarely writing the feature — it is understanding the operation behind it, and changing things without breaking what already runs.",
+      "I've been building software since 2021, mostly on the .NET stack, working primarily on systems for the logistics industry.",
     about_p2:
-      "Outside work I build and run my own products. Keeping one live taught me plenty that never shows up on a Jira card, mostly about what breaks after the deploy.",
+      "Outside of client work, I build and run my own products. One of them is a scheduling and management app for barbershops, launched in 2025. Keeping a system live with real, active users taught me things no amount of client work alone would — challenges that go well beyond code and reshaped how I think about building software.",
     about_p3:
-      "I use AI daily while developing, building agents and skills to speed up my own workflow, and I'm working on integrating it into the applications I build.",
+      "Today I still work mainly with .NET, while exploring other technologies on the side. I keep running my own products and learning continuously, with a particular focus on generative AI.",
 
     /* ---------- Contact ---------- */
     contact_label: "Contact",
@@ -232,11 +232,11 @@ const translations = {
     about_label: "Sobre",
     about_meta: "Blumenau, SC · UTC−3",
     about_p1:
-      "São sistemas com muita regra de negócio e muita superfície de integração. O trabalho difícil raramente é escrever a feature, mas sim entender a operação por trás dela e mexer sem quebrar o que já roda.",
+      "Atuo com desenvolvimento de software desde 2021, com foco principal na plataforma .NET. Ao longo desse período, trabalhei majoritariamente com sistemas para o setor de logística.",
     about_p2:
-      "Fora do trabalho, construo e opero meus próprios produtos. Manter um deles no ar me ensinou muita coisa que não aparece em card do Jira, principalmente o que quebra depois do deploy.",
+      "Além do trabalho como desenvolvedor, construo e opero meus próprios produtos. Um deles é um aplicativo de agenda e gestão para barbearias, lançado em 2025. Manter um sistema no ar com usuários ativos me ensinou lições que dificilmente aprenderia apenas prestando serviço para empresas, desafios que vão muito além do código e que transformaram a forma como enxergo o desenvolvimento de software.",
     about_p3:
-      "Uso IA no dia a dia de desenvolvimento, construindo agentes e skills para acelerar meu próprio fluxo, e venho trabalhando na integração de IA nas aplicações que desenvolvo.",
+      "Atualmente, continuo trabalhando principalmente com .NET, mas também explorando outras tecnologias. Sigo operando meus produtos e estudando continuamente, com foco especial em IA generativa.",
 
     /* ---------- Contato ---------- */
     contact_label: "Contato",
